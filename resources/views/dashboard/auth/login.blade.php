@@ -25,66 +25,65 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body {
-            background-image: url("assets/images/bg.jpg");
-            background-repeat: no-repeat, repeat;
-            background-size: 100%;
             font-family: 'Poppins', sans-serif;
-
         }
-
     </style>
 </head>
 
 <body>
-    <div id="layoutAuthentication_content">
-        <main>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5">
-                        <div class="card shadow-lg border-0 rounded-lg mt-5">
-                            <div class="card-header">
-                                <h3 class="text-center font-weight-light my-4">Login Administrator</h3>
-                            </div>
-                            <div class="card-body">
-                                @if (Session::has('success'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ Session::get('success') }}
-                                    </div>
-                                @endif
-                                <form method="POST" action="{{ route('admin.login') }}" novalidate>
-                                    @csrf
-                                    <div class="form-group">
-                                        <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                        <input class="form-control py-4 @error('email') is-invalid @enderror"
-                                            id="inputEmailAddress" type="email" placeholder="Isi email" name="email"
-                                            value="{{ old('email') }}" />
-                                        @error('email')
-                                            <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="small mb-1" for="inputPassword">Password</label>
-                                        <input class="form-control py-4 @error('email') is-invalid @enderror"
-                                            id="inputPassword" type="password" placeholder="Isi password"
-                                            name="password" />
-                                        @error('password')
-                                            <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                        <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-footer text-center">
+    <section class="vh-100" style="background-color: #EDF1F5;">
+
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card text-white shadow-lg border-0 rounded-lg mt-5"
+                                style="background-color: #283342">
+                                <div class="card-header border-0">
+                                    <h3 class="text-center font-weight-700 my-4">LOGIN</h3>
+                                </div>
+                                <div class="card-body">
+                                    @if (Session::has('success'))
+                                        <div class="alert alert-success" role="alert"
+                                            style="background-color: #5ee96c">
+                                            {{ Session::get('success') }}
+                                        </div>
+                                    @endif
+                                    <form method="POST" action="{{ route('admin.login') }}" novalidate>
+                                        @csrf
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                            <input class="form-control py-4 @error('email') is-invalid @enderror"
+                                                id="inputEmailAddress" type="email" placeholder="Isi email"
+                                                name="email" value="{{ old('email') }}" />
+                                            @error('email')
+                                                <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputPassword">Password</label>
+                                            <input class="form-control py-4 @error('email') is-invalid @enderror"
+                                                id="inputPassword" type="password" placeholder="Isi password"
+                                                name="password" />
+                                            @error('password')
+                                                <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
+                                        <div
+                                            class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+                                            <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
+            </main>
+        </div>
+    </section>
 </body>
 
 </html>

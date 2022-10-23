@@ -13,7 +13,7 @@
 
 <body>
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">Apotek <span style="color: #026BE4">Elka Farma </span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -27,15 +27,20 @@
                             href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ $title === 'Cek Stok Obat' ? 'active' : '' }}" href="/cek-stok">Cek Stok
+                        <a class="nav-link {{ $title === 'Cek Stok Obat' || $title === 'Detail' ? 'active' : '' }}"
+                            href="/cek-stok">Daftar
                             Obat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $title === 'Kategori' ? 'active' : '' }}" href="/kategori">Kategori
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ $title === 'Tentang Kami' ? 'active' : '' }}" href="/tentang-kami">Tentang
                             Kami</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-primary ms-lg-3">LOGIN</button>
+                        <a href="/admin" class="btn btn-primary ms-lg-3">LOGIN</a>
                     </li>
                 </ul>
             </div>

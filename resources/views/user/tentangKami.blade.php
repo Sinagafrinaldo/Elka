@@ -4,16 +4,14 @@
     {{-- TENTANG KAMI --}}
     <section class="p-5">
         <div class="container p-10">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-12 d-flex">
+            <div class="row text-center">
+                <h2>Tentang Kami</h2>
+                <hr class="mt-1" style="border-width: 2px">
+                <div class="row">
                     <div class="about-img align-self-center">
                         <img src="./assets/3.jpg" alt="" class="img-fluid">
                     </div>
-                </div>
-                <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-md-5">
-                    <div class="about-text">
-                        <h2>Tentang Kami</h2>
-                        <hr class="mt-1" style="border-width: 2px">
+                    <div class="about-text p-4">
                         <p style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe vel
                             architecto qui necessitatibus
                             delectus doloremque amet iure blanditiis cum fuga, nostrum nesciunt accusantium maxime ratione
@@ -25,6 +23,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
