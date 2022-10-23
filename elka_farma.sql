@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2022 at 07:56 AM
+-- Generation Time: Oct 23, 2022 at 01:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,6 +45,34 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin 1', 'joyravelo@gmail.com', '2022-04-22 01:20:28', '$2y$10$RVcEnWA.d/P3oKmPq0Rq8uTNpP.ycMW1gC3NW2LkE7s1cb7H1CtFW', '93Rl4bRAQEU6O3FxfiQwHgB8Uu4w8AFiqzNLQ1MmSPG3gifIeNzfRjjrX8ap', '2022-04-22 01:20:29', '2022-04-22 01:20:29'),
 (2, 'Super Admin 2', 'elka123@gmail.com', '2022-04-22 01:20:29', '$2y$10$18irQRfbA8DcDqDE2UjtSOkaReQgLadOJ4Wsq0qLs2bHv2gvqZMsm', '', '2022-10-09 20:08:30', '2022-10-09 20:08:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barang`
+--
+
+CREATE TABLE `barang` (
+  `id` int(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `sisa` int(255) NOT NULL,
+  `kategori` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'tersedia',
+  `deskripsi` varchar(5000) NOT NULL,
+  `minimal` int(255) NOT NULL,
+  `maksimal` int(255) NOT NULL,
+  `kadaluarsa` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id`, `nama`, `sisa`, `kategori`, `status`, `deskripsi`, `minimal`, `maksimal`, `kadaluarsa`, `image`, `slug`) VALUES
+(1, 'Paramex Obat Sakit Kepala', 40, 'one', 'tersedia', '<p>PARAMEX merupakan obat dengan kandungan Paracetamol, Propyphenazone, Caffeine, Dexchlorpheniramine maleate. Obat ini dapat digunakan untuk meringankan sakit kepala dan sakit gigi.</p>\r\n\r\n<p>Berisi 4 tablet dalam 1 strip.</p>\r\n\r\n<p>Indikasi Umum :</p>\r\n\r\n<p>Meringankan sakit kepala dan sakit gigi.</p>\r\n\r\n<p>INFORMASI PRODUK LEBIH LANJUT</p>\r\n\r\n<p><br />\r\nKomposisi</p>\r\n\r\n<p>Paracetamol 250 mg, Propyphenazone 150 mg, Caffeine 50 mg, Dexchlorpheniramine maleate 1 mg</p>\r\n\r\n<p>Dosis</p>\r\n\r\n<p>Dewasa dan anak-anak diatas 12 tahun : 2-3 kali sehari 1 tablet.</p>\r\n\r\n<p>Aturan Pakai</p>\r\n\r\n<p>Sesudah makan</p>\r\n\r\n<p>Perhatian</p>\r\n\r\n<p>Hati-hati penggunaan pada penderita porphyria akut karena dapat menimbulkan porphyrinogenic Bila setelah 5 hari nyeri tidak hilang, segera hubungi dokter Obat ini dapat menyebabkan kantuk Penggunaan pada penderita yang mengkonsumsi alkohol dapat meningkatkan resiko kerusakan hati.</p>', 10, 50, '2022-10-23', 'paramex.jpg', 'paramex-obat-sakit-kepala'),
+(2, 'Bodrex', 55, 'two', 'tersedia', '<p>Obat sakit kepala yang dipercaya sejak 1970 sebagai Ahlinya Redakan Sakit Kepala. Dengan 5 OK-nya bodrex redakan sakit kepala, nyeri dan demam, formula yang dipercaya, dapat diminum sebelum makan, tanpa ngantuk, dipercaya sejak 1971.</p>', 15, 190, '2022-10-23', 'bodrex.png', 'bodrex');
 
 -- --------------------------------------------------------
 
@@ -134,6 +162,12 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -169,6 +203,12 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
