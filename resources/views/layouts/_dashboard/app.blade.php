@@ -40,7 +40,7 @@
 <body style="background-color:#EDF1F5; ">
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
-        <div class="border-end" id="sidebar-wrapper" style="background-color: #283342; ">
+        <div class="d-flex flex-column border-end" id="sidebar-wrapper" style="background-color: #283342; ">
             <div class="sidebar-heading bg-dark">
                 <a href="
                     {{ route('admin.home') }}" class="text-decoration-none d-flex">
@@ -49,7 +49,7 @@
                         Farma</h5>
                 </a>
             </div>
-            <div class="sidebar-heading bg-transparent d-flex align-items-center">
+            <div class="sidebar-heading bg-transparent d-flex align-items-center px-2">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" class="rounded-3"
                     style="width: 50px;" alt="Avatar" />
                 <div class=" d-block ps-2 text-white">
@@ -60,49 +60,46 @@
                         Admin / Staff
                     </h6>
                 </div>
-                <a href="#" class="ms-auto text-white" role="button" data-bs-toggle="dropdown">
+                <a href="#" class="ms-auto text-white px-2" role="button" data-bs-toggle="dropdown">
                     <i class="fa fa-ellipsis-vertical"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item text-red" href="{{ route('admin.logout') }}">{{ _('Logout') }}</a>
+                <div class="dropdown-menu dropdown-menu-dark px-2" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item text-red bg-danger rounded-2"
+                        href="{{ route('admin.logout') }}">{{ _('Logout') }}</a>
                 </div>
             </div>
-            <div class="list-group list-group-flush">
+            <div class="list-group list-group-flush mb-3">
                 <a class="list-group-item list-group-item-action text-white p-3 d-flex"
                     href="
                     {{ route('admin.home') }}"
                     style="background-color: {{ $title === 'dashboard' ? '#009099' : 'transparent' }}">
-                    <i class="fa-solid fa-house"></i>
+                    <img src="/assets/icon-navbar/dashboard.png" class="icon-navbar">
                     Dashboard
                 </a>
 
-                <a class="list-group-item list-group-item-action text-white bg-transparent p-3 d-flex "
+                <a class="list-group-item list-group-item-action text-white bg-transparent p-3 d-flex accordion-button collapsed"
                     data-bs-toggle="collapse" href="#inventorySubmenu" role="button" aria-expanded="false"
                     aria-controls="inventorySubmenu">
-                    <i class="fa-regular fa-calendar-plus"></i>
+                    <img src="/assets/icon-navbar/inventory.png" class="icon-navbar">
                     Inventory
-                    <i class="fa-solid fa-chevron-down ms-auto fs-6 me-0" style="width: auto"></i>
                 </a>
-                <ul class="collapse list-unstyled {{ Str::limit($title, 9, '') === 'inventory' ? 'show' : '' }}"
+                <ul class="collapse list-unstyled {{ substr($title, -4) === 'Obat' || $title === 'Input Transaksi' ? 'show' : '' }}"
                     id="inventorySubmenu">
                     <a class="list-group-item list-group-item-action text-white  p-3 ps-5"
-                        style="background-color: {{ $title === 'inventory Daftar Obat' || $title === 'inventory Input Obat' ? '#009099' : 'transparent' }}"
+                        style="background-color: {{ substr($title, -4) === 'Obat' ? '#009099' : 'transparent' }}"
                         href="{{ route('admin.daftarObat') }}">Daftar Obat</a>
                     <a class="list-group-item list-group-item-action text-white  p-3 ps-5"
-                        style="background-color: {{ $title === 'inventory Input Transaksi' ? '#009099' : 'transparent' }}"
+                        style="background-color: {{ $title === 'Input Transaksi' ? '#009099' : 'transparent' }}"
                         href="{{ route('admin.inputTransaksi') }}">Input Transaksi</a>
                 </ul>
 
-                <a class="list-group-item list-group-item-action text-white bg-transparent p-3 d-flex "
+                <a class="list-group-item list-group-item-action text-white bg-transparent p-3 d-flex accordion-button collapsed"
                     data-bs-toggle="collapse" href="#laporanSubmenu" role="button" aria-expanded="false"
                     aria-controls="laporanSubmenu">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <div>
-                        Laporan
-                    </div>
-                    <i class="fa-solid fa-chevron-down ms-auto fs-6 me-0" style="width: auto"></i>
+                    <img src="/assets/icon-navbar/lapor.png" class="icon-navbar">
+                    Laporan
                 </a>
-                <ul class="collapse list-unstyled {{ Str::limit($title, 7, '') === 'Laporan' ? 'show' : '' }} "
+                <ul class="collapse list-unstyled {{ substr($title, 0, 7) === 'Laporan' ? 'show' : '' }} "
                     id="laporanSubmenu">
                     <a class="list-group-item list-group-item-action text-white p-3 ps-5 "
                         style="background-color: {{ $title === 'Laporan Barang Masuk' ? '#009099' : 'transparent' }}"
@@ -122,36 +119,52 @@
                 <a class="list-group-item list-group-item-action text-white p-3 d-flex"
                     href="
                     {{ route('admin.kadaluarsa') }}"
-                    style="background-color: {{ $title === 'kadaluarsa' ? '#009099' : 'transparent' }}">
-                    <i class="fa-solid fa-sliders"></i>
+                    style="background-color: {{ $title === 'Kadaluarsa' ? '#009099' : 'transparent' }}">
+                    <img src="/assets/icon-navbar/kadaluarsa.png" class="icon-navbar">
                     Kadaluarsa
                 </a>
-                <div class="text-white mx-3 p-2 d-flex justify-content-center"
-                    style="background-color: #455162; margin-top: 150px;">
-                    Website
-                </div>
 
+                <a class="list-group-item list-group-item-action text-white p-3 d-flex"
+                    href="
+                    {{ route('admin.kategori') }}"
+                    style="background-color: {{ substr($title, -8) === 'Kategori' ? '#009099' : 'transparent' }}">
+                    <img src="/assets/icon-navbar/kategori.png" class="icon-navbar">
+                    Kategori
+                </a>
+            </div>
+            <div class="text-white mt-auto mb-3 mx-3 p-2 d-flex justify-content-center"
+                style="background-color: #455162; margin-top: 150px;">
+                Website
             </div>
         </div>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <!-- Top navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom ">
-                <button class="btn btn-light" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <button class="btn btn-light d-lg-none d-md-none " id="sidebarToggle"><i
+                        class="fa-solid fa-bars"></i></button>
                 <div class="container-fluid brv">
 
                     <div class="ms-auto">
                         <div class="d-flex">
-                            @if (now('Asia/Jakarta')->format('a') == 'am')
-                                <div class="d-flex align-items-center">
+                            @if (now('Asia/Jakarta')->format('H:i') > '04:00' && now('Asia/Jakarta')->format('H:i') < '12:00')
+                                <div class="d-flex align-items-center ms-auto">
                                     <i class="rounded-circle bg-warning me-2" style="width: 15px; height: 15px"></i>
                                     <h6 class="mt-2">Selamat Pagi</h6>
                                 </div>
                             @else
-                                <div class="d-flex align-items-center">
-                                    <i class="rounded-circle bg-dark me-2" style="width: 15px; height: 15px"></i>
-                                    <h6 class="mt-2">Selamat Malam</h6>
-                                </div>
+                                @if (now('Asia/Jakarta')->format('H:i') > '12:00' && now('Asia/Jakarta')->format('H:i') < '15:00')
+                                    <div class="d-flex align-items-center ms-auto">
+                                        <i class="rounded-circle bg-warning me-2"
+                                            style="width: 15px; height: 15px"></i>
+                                        <h6 class="mt-2">Selamat Siang</h6>
+                                    </div>
+                                @else
+                                    <div class="d-flex align-items-center ms-auto">
+                                        <i class="rounded-circle bg-dark me-2" style="width: 15px; height: 15px"></i>
+                                        <h6 class="mt-2">Selamat Malam</h6>
+                                    </div>
+                                @endif
                             @endif
                         </div>
                         <div style="font-size: 11pt">
@@ -177,10 +190,14 @@
 </html>
 
 <style>
-    .list-group i {
-        width: 30px;
-        font-size: 16pt;
-        margin-right: 5px;
+    .list-group {
+        font-size: 11pt;
+    }
+
+    .list-group img {
+        width: 20px;
+        height: 19px;
+        margin-right: 10px;
     }
 
     .d-block h6 {
@@ -190,6 +207,17 @@
     .search {
         width: 50%;
     }
+
+    .accordion-button::after {
+        filter: brightness(0%) invert(100%)
+    }
+
+    .accordion-button:focus {
+        box-shadow: inherit;
+        border: 0;
+    }
+
+
 
     @media (max-width: 850px) {
         .search {

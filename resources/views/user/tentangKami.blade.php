@@ -9,9 +9,10 @@
                 <hr class="mt-1" style="border-width: 2px">
                 <div class="row">
                     <div class="about-img align-self-center">
-                        <img src="./assets/3.jpg" alt="" class="img-fluid">
+                        <img src="./assets/tentang.png" alt="" class="img-fluid">
                     </div>
-                    <div class="about-text p-4">
+                    <div class="about-text p-4 px-0">
+                        <div class="fs-5 mt-3 mb-2 text-start fw-bold">What is Lorem Ipsum?</div>
                         <p style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe vel
                             architecto qui necessitatibus
                             delectus doloremque amet iure blanditiis cum fuga, nostrum nesciunt accusantium maxime ratione

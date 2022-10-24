@@ -7,8 +7,8 @@
         <div class="d-flex mb-3">
             <div>
                 <div class="d-inline-flex">
-                    <h4 class="text-secondary">Laporan</h4>
-                    <i class="d-flex align-items-center mx-3 fa-solid fa-chevron-right text-dark"></i>
+                    <a href="" class="text-secondary fs-4 text-decoration-none">Laporan</a>
+                    <i class="mt-2 mx-3 fa-solid fa-chevron-right text-dark"></i>
                     @yield('title')
                 </div>
                 <h6 class="fs-6 mt-1 mb-4 fw-normal">Laporan Penjualan Berdasarkan Barang Sisa</h6>
@@ -22,11 +22,11 @@
         </div>
     </div>
     <div class="d-flex mx-4 py-3" style="background-color: #F7FAFD">
-        <div class="d-flex col-6 justify-content-between ms-auto">
-            <input type="text">
-            -
-            <input type="text">
-            <button class="btn btn-dark">Tampilkan</button>
+        <div class="d-flex col-7 ms-auto">
+            <input name="date1" type="date" class="form-control" max="{{ now('Asia/Jakarta')->format('Y-m-d') }}">
+            <div class="fs-4 px-2"> - </div>
+            <input name="date2" type="date" class="form-control" max="{{ now('Asia/Jakarta')->format('Y-m-d') }}">
+            <button class="btn btn-dark ms-2">Tampilkan</button>
         </div>
     </div>
     <div class="mx-4 pt-3">

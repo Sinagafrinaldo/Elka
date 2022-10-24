@@ -17,18 +17,18 @@
                 <i class="fa-solid fa-filter me-3" style="font-size: 14pt"></i>
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>-- Pilih Jenis --</option>
-                    <option value="1">Jan 2022</option>
-                    <option value="2">Feb 2022</option>
-                    <option value="3">Mar 2022</option>
-                    <option value="1">Apr 2022</option>
-                    <option value="2">Mei 2022</option>
-                    <option value="3">Jun 2022</option>
-                    <option value="1">Jul 2022</option>
-                    <option value="2">Aug 2022</option>
-                    <option value="3">Sep 2022</option>
-                    <option value="1">Okt 2022</option>
-                    <option value="2">Nov 2022</option>
-                    <option value="3">Des 2022</option>
+                    <option value="1">Jan</option>
+                    <option value="2">Feb</option>
+                    <option value="3">Mar</option>
+                    <option value="1">Apr</option>
+                    <option value="2">Mei</option>
+                    <option value="3">Jun</option>
+                    <option value="1">Jul</option>
+                    <option value="2">Aug</option>
+                    <option value="3">Sep</option>
+                    <option value="1">Okt</option>
+                    <option value="2">Nov</option>
+                    <option value="3">Des</option>
                 </select>
             </div>
         </div>

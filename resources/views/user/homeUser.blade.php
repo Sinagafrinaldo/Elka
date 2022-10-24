@@ -66,7 +66,7 @@
     </div>
 
     {{-- LOKASI --}}
-    <section class="pb-5 mb-5">
+    <section class="pb-5 mb-5" id="lokasi">
         <div class="container p-10">
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-5">

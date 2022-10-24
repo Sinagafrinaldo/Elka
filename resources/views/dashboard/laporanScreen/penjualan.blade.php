@@ -1,7 +1,7 @@
 @extends('dashboard.laporan')
 
 @section('title')
-    <h4 class="text-dark fw-bold">Penjualan</h4>
+    <a href="" class="text-dark fw-bold fs-4 text-decoration-none">Penjualan</a>
 @endsection
 
 @section('table')

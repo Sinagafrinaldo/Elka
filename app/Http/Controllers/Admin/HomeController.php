@@ -30,18 +30,18 @@ class HomeController extends Controller
 		->paginate(10)->onEachSide(0);
 
         return view('dashboard.inventori.daftarObat', [
-            "title" => "inventory Daftar Obat",
+            "title" => "Daftar Obat",
             "barang" => $barang
         ]); 
     }
     public function inputTransaksi (){
         return view('dashboard.inventori.inputTransaksi', [
-            "title" => "inventory Input Transaksi"
+            "title" => "Input Transaksi"
         ]); 
     }
     public function inputObat (){
-        return view('dashboard.inventori.screenobat', [
-            "title" => "inventory Input Obat"
+        return view('dashboard.inventori.tambahObat', [
+            "title" => "Input Obat"
         ]); 
     }
 
@@ -68,9 +68,28 @@ class HomeController extends Controller
 
 	public function kadaluarsa (){
         return view('dashboard.kadaluarsa',[
-            "title" => "kadaluarsa"
+            "title" => "Kadaluarsa"
         ]); 
     }
+
+    public function kategori (){
+        return view('dashboard.kategori.home',[
+            "title" => "Kategori"
+        ]); 
+    }
+
+    public function inputKategori (){
+        return view('dashboard.kategori.input',[
+            "title" => "Tambah Kategori"
+        ]); 
+    }
+
+    public function editKategori (){
+        return view('dashboard.kategori.edit',[
+            "title" => "Edit Kategori"
+        ]); 
+    }
+
 
     public function store(Request $request)
 	{
@@ -112,7 +131,7 @@ class HomeController extends Controller
 	$barang = DB::table('barang')->where('slug',$request->slug)->get();
 		return view('dashboard.inventori.detailObat',[
             'barang' => $barang,
-            "title" => "Detail Barang"
+            "title" => "Detail Obat"
         ]);
 	}
 
@@ -121,7 +140,7 @@ class HomeController extends Controller
 	$barang = DB::table('barang')->where('slug',$request->slug)->get();
 		return view('dashboard.inventori.editObat',[
             'barang' => $barang,
-            "title" => "Edit Barang"
+            "title" => "Edit Obat"
         ]);
 	}
 	

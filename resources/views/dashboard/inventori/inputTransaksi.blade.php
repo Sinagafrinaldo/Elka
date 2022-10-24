@@ -1,5 +1,5 @@
 <link rel="shortcut icon" href="/assets/images/icon.svg" type="image/x-icon">
-<title>Inventory || Elka Farma</title>
+<title>Transaksi || Elka Farma</title>
 @extends('layouts._dashboard.app')
 
 @section('content')
@@ -12,7 +12,7 @@
         <h6 class="fs-6 mt-1 mb-4">*Semua kolom wajib diisi.</h6>
 
         {{-- Tambah --}}
-        <div class="d-flex">
+        <div class="row">
             <div class="col-lg-4 h-75 border border-secondary rounded-3 me-4 p-0" style="background-color: #E3EBF3">
                 <h5 class="d-flex justify-content-center border-bottom border-secondary p-3 fw-bold text-success mb-5">
                     Tambah Pembelian</h5>

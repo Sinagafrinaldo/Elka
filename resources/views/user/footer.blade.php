@@ -41,16 +41,16 @@
                     </h6>
                     <hr>
                     <p>
-                        <a href="#!" class="text-reset text-decoration-none">Tentang Apotek</a>
+                        <a href="/tentang-kami" class="text-reset text-decoration-none">Tentang Apotek</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset text-decoration-none">Lokasi Apotek</a>
+                        <a href="/#lokasi" class="text-reset text-decoration-none">Lokasi Apotek</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset text-decoration-none">Stok Obat</a>
+                        <a href="/cek-stok" class="text-reset text-decoration-none">Stok Obat</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset text-decoration-none">Produk dan Layanan</a>
+                        <a href="/kategori" class="text-reset text-decoration-none">Kategori</a>
                     </p>
                 </div>
                 <!-- Grid column -->

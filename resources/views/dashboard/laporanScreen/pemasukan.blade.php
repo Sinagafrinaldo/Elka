@@ -1,7 +1,7 @@
 @extends('dashboard.laporan')
 
 @section('title')
-    <h4 class="text-dark fw-bold">Pemasukan</h4>
+    <a href="" class="text-dark fw-bold fs-4 text-decoration-none">Pemasukan</a>
 @endsection
 
 @section('table')

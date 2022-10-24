@@ -36,12 +36,15 @@ Route::prefix('admin')->group(function(){
     Route::get('/laporan-penjualan',[App\Http\Controllers\Admin\HomeController::class,'laporan_penjualan'])->name('admin.laporan_penjualan');
     Route::get('/laporan-pemasukan',[App\Http\Controllers\Admin\HomeController::class,'laporan_pemasukan'])->name('admin.laporan_pemasukan');
     Route::get('/kadaluarsa',[App\Http\Controllers\Admin\HomeController::class,'kadaluarsa'])->name('admin.kadaluarsa');
+    Route::get('/kategori',[App\Http\Controllers\Admin\HomeController::class,'kategori'])->name('admin.kategori');
     
     Route::post('/input-obat/store',[App\Http\Controllers\Admin\HomeController::class,'store']);
 
 
  Route::get('/detail-obat/{slug}',[App\Http\Controllers\Admin\HomeController::class,'detail'])->name('admin.detail');
  Route::get('/edit-barang/{slug}',[App\Http\Controllers\Admin\HomeController::class,'edit'])->name('admin.edit');
-     
+
+ Route::get('/tambah-kategori',[App\Http\Controllers\Admin\HomeController::class,'inputKategori'])->name('admin.inputKategori');
+ Route::get('/edit-kategori',[App\Http\Controllers\Admin\HomeController::class,'editKategori'])->name('admin.editKategori');
  
 });
