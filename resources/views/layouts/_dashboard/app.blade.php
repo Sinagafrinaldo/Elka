@@ -64,13 +64,12 @@
                     <i class="fa fa-ellipsis-vertical"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-dark px-2" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item text-red bg-danger rounded-2"
-                        href="{{ route('admin.logout') }}">{{ _('Logout') }}</a>
+                    <a class="dropdown-item text-red bg-danger rounded-2" href="{{ route('admin.logout') }}">{{
+                        _('Logout') }}</a>
                 </div>
             </div>
             <div class="list-group list-group-flush mb-3">
-                <a class="list-group-item list-group-item-action text-white p-3 d-flex"
-                    href="
+                <a class="list-group-item list-group-item-action text-white p-3 d-flex" href="
                     {{ route('admin.home') }}"
                     style="background-color: {{ $title === 'dashboard' ? '#009099' : 'transparent' }}">
                     <img src="/assets/icon-navbar/dashboard.png" class="icon-navbar">
@@ -116,16 +115,14 @@
                         href="{{ route('admin.laporan_pemasukan') }}">Laporan Pemasukan</a>
                 </ul>
 
-                <a class="list-group-item list-group-item-action text-white p-3 d-flex"
-                    href="
+                <a class="list-group-item list-group-item-action text-white p-3 d-flex" href="
                     {{ route('admin.kadaluarsa') }}"
                     style="background-color: {{ $title === 'Kadaluarsa' ? '#009099' : 'transparent' }}">
                     <img src="/assets/icon-navbar/kadaluarsa.png" class="icon-navbar">
                     Kadaluarsa
                 </a>
 
-                <a class="list-group-item list-group-item-action text-white p-3 d-flex"
-                    href="
+                <a class="list-group-item list-group-item-action text-white p-3 d-flex" href="
                     {{ route('admin.kategori') }}"
                     style="background-color: {{ substr($title, -8) === 'Kategori' ? '#009099' : 'transparent' }}">
                     <img src="/assets/icon-navbar/kategori.png" class="icon-navbar">
@@ -147,38 +144,37 @@
 
                     <div class="ms-auto">
                         <div class="d-flex">
-                            @if (now('Asia/Jakarta')->format('H:i') > '04:00' && now('Asia/Jakarta')->format('H:i') < '12:00')
-                                <div class="d-flex align-items-center ms-auto">
-                                    <i class="rounded-circle bg-warning me-2" style="width: 15px; height: 15px"></i>
-                                    <h6 class="mt-2">Selamat Pagi</h6>
-                                </div>
-                            @else
-                                @if (now('Asia/Jakarta')->format('H:i') > '12:00' && now('Asia/Jakarta')->format('H:i') < '15:00')
-                                    <div class="d-flex align-items-center ms-auto">
-                                        <i class="rounded-circle bg-warning me-2"
-                                            style="width: 15px; height: 15px"></i>
-                                        <h6 class="mt-2">Selamat Siang</h6>
-                                    </div>
-                                @else
-                                    <div class="d-flex align-items-center ms-auto">
-                                        <i class="rounded-circle bg-dark me-2" style="width: 15px; height: 15px"></i>
-                                        <h6 class="mt-2">Selamat Malam</h6>
-                                    </div>
-                                @endif
-                            @endif
+                            @if (now('Asia/Jakarta')->format('H:i') > '04:00' && now('Asia/Jakarta')->format('H:i')
+                            < '12:00' ) <div class="d-flex align-items-center ms-auto">
+                                <i class="rounded-circle bg-warning me-2" style="width: 15px; height: 15px"></i>
+                                <h6 class="mt-2">Selamat Pagi</h6>
                         </div>
-                        <div style="font-size: 11pt">
-                            {{ now('Asia/Jakarta')->format('d F Y H:i') }}
-                        </div>
+                        @else
+                        @if (now('Asia/Jakarta')->format('H:i') > '12:00' && now('Asia/Jakarta')->format('H:i')
+                        < '18:00' ) <div class="d-flex align-items-center ms-auto">
+                            <i class="rounded-circle bg-warning me-2" style="width: 15px; height: 15px"></i>
+                            <h6 class="mt-2">Selamat Siang</h6>
                     </div>
+                    @else
+                    <div class="d-flex align-items-center ms-auto">
+                        <i class="rounded-circle bg-dark me-2" style="width: 15px; height: 15px"></i>
+                        <h6 class="mt-2">Selamat Malam</h6>
+                    </div>
+                    @endif
+                    @endif
                 </div>
-            </nav>
-
-            <!-- Page content-->
-            <div style="width:100%">
-                @yield('content')
-            </div>
+                <div style="font-size: 11pt">
+                    {{ now('Asia/Jakarta')->format('d F Y H:i') }}
+                </div>
         </div>
+    </div>
+    </nav>
+
+    <!-- Page content-->
+    <div style="width:100%">
+        @yield('content')
+    </div>
+    </div>
     </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

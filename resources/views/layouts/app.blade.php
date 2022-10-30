@@ -16,7 +16,7 @@
     <!-- Scripts Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -33,8 +33,8 @@
 <body style="background-color:#F6F6F6">
 
     {{-- <main class="py-4"> --}}
-    @yield('content')
-    {{-- </main> --}}
+        @yield('content')
+        {{-- </main> --}}
     <footer class="text-center align-items-end">
         <footer style=" background:#1F76C6" class="text-center text-white">
             <!-- Grid container -->
@@ -42,22 +42,12 @@
 
                 <section class="mb-4">
 
-                    <i>Joy Ravelo Tarigan - 119140037 || </i>
-
-                    <i>Frinaldo Sinaga - 119140064</i><br>
-                    <i>Dodi Devrian Andrianto - 119140023 || </i>
-                    <i>Hendamia Yohana Sembiring - 119140178 || </i>
-                    <i>Fahriza Yusefa - 119140005 </i>
 
 
                 </section>
 
             </div>
 
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                Copyright © 2022 by
-                <a class="text-white" href="#">PWL Project </a>
-            </div>
             <!-- Copyright -->
         </footer>
     </footer>
