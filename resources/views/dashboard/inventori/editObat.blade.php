@@ -29,9 +29,9 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <div class="fs-6 mb-1">Jenis Obat</div>
+                <div class="fs-6 mb-1">Kategori</div>
                 <select name="kategori" class="form-select bg-light" aria-label="Default select example">
-                    <option disabled>Pilih Jenis Obat</option>
+                    <option disabled>Pilih Kategori</option>
 
                     @foreach ($kategori as $k)
 

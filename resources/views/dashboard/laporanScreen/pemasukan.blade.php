@@ -13,7 +13,7 @@
                     <th scope="col">No</th>
                     <th scope="col">ID Produk</th>
                     <th scope="col">Produk</th>
-                    <th scope="col">Jenis Produk</th>
+                    <th scope="col">Kategori</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Jumlah</th>
                 </tr>

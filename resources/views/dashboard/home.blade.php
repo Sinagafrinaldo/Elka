@@ -133,7 +133,7 @@
                     </div>
                     <div class="col">
                         <h5 class="fw-bolder">{{$kategori}}</h5>
-                        <span>Jenis Obat</span>
+                        <span>Kategori</span>
                     </div>
                 </div>
             </div>

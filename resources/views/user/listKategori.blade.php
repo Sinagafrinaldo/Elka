@@ -14,9 +14,9 @@
         <hr>
         <div class="row justify-content-center align-items-stretch">
             @foreach ($barang as $b)
-            <div class="d-flex flex-column col-lg-3 col-md-5 col-sm-5 m-2 border rounded p-3 ">
+            <div class="d-flex flex-column col-lg-3 col-md-5 col-sm-5 m-2 border rounded p-3">
                 <div class="h-100">
-                    <img src="/uploads/{{$b->image}}" class=" img-fluid align-self-center" alt="...">
+                    <img src="/uploads/{{$b->image}}" class="img-fluid align-self-center" alt="...">
                 </div>
                 <div class="card-body text-center">
                     <h5 class="card-title fw-bolder fs-4 p-3">{{$b->nama}}</h5>
