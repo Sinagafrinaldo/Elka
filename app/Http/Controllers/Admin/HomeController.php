@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
  
 class HomeController extends Controller
-{
+{ 
     public function __construct()
     {
         $this->middleware('adminMiddle');
@@ -40,11 +40,17 @@ class HomeController extends Controller
             "kategori"=>$kategori
         ]); 
     }
+
     public function inputTransaksi (){
+        $barang = DB::table('barang')->get();
+
+        
         return view('dashboard.inventori.inputTransaksi', [
-            "title" => "Input Transaksi"
+            "title" => "Input Transaksi",
+            "barang" => $barang
         ]); 
     }
+
     public function inputObat (){
         $kategori = DB::table('kategori')->get();
 
@@ -55,24 +61,41 @@ class HomeController extends Controller
     }
 
 	public function laporan_barangmasuk (){
+        $barang = DB::table('laporan_barangmasuk')
+		->orderby('tanggal' , 'desc')
+		->paginate(8)->onEachSide(0);
         return view('dashboard.laporanScreen.barangmasuk', [
             "title" => "Laporan Barang Masuk",
+            "barang" => $barang
         ]); 
     }
     public function laporan_barangsisa (){
+        $barang = DB::table('barang')
+		->orderby('tanggal_edit' , 'desc')
+		->paginate(8)->onEachSide(0);
         return view('dashboard.laporanScreen.barangsisa', [
-            "title" => "Laporan Barang Sisa"
+            "title" => "Laporan Barang Sisa",
+            "barang" => $barang
         ]); 
     }
     public function laporan_penjualan (){
+        $laporan = DB::table('struk')
+		->orderby('tanggal' , 'desc')
+		->paginate(8)->onEachSide(0);
         return view('dashboard.laporanScreen.penjualan', [
-            "title" => "Laporan Penjualan"
+            "title" => "Laporan Penjualan",
+            "laporan" => $laporan
         ]); 
     }
     public function laporan_pemasukan (){
+        $laporan = DB::table('laporan_pemasukan')
+		->orderby('tanggal' , 'desc')
+		->paginate(8)->onEachSide(0);
         return view('dashboard.laporanScreen.pemasukan', [
-            "title" => "Laporan Pemasukan"
-        ]); 
+            "title" => "Laporan Pemasukan",
+            "laporan" => $laporan
+            
+        ]);  
     }
 
 	public function kadaluarsa (){
@@ -239,6 +262,21 @@ class HomeController extends Controller
             'kategori'=> 'required',
 
 		]);
+        $products=DB::table('barang')
+            ->where('id',$request->id)
+            ->get();
+
+        foreach ($products as $key => $product){
+            if ($request->jumlah > $product->sisa){
+                DB::table('laporan_barangmasuk')->insert([
+                    'nama' => $request->nama,
+                    'kategori' =>$request->kategori,
+                    'jumlah' => $request->jumlah - $product->sisa
+                ]);
+            }
+        }
+        
+
 		$content = $request->input('deskripsi');
 		$slug =  Str::slug($request->nama,"-");
         if($request->hasFile('image')){
@@ -274,9 +312,9 @@ class HomeController extends Controller
                 'tanggal_edit'=> $time
             ]);
         }
-
 		return redirect('/admin/daftar-obat');
 	}
+
     public function hapusBarang($id)
 	{
 	
@@ -294,9 +332,9 @@ class HomeController extends Controller
                 ->orwhere('kategori','LIKE','%'.$request->search."%")
                 ->get();
             
-                if ($products->isEmpty()){
-                    $products=DB::table('barang') ->get();
-                }
+                // if ($products->isEmpty()){
+                //     $products=DB::table('barang') ->get();
+                // }
                 if($products){
                     foreach ($products as $key => $product) {
             
@@ -326,5 +364,7 @@ class HomeController extends Controller
             }
         }
     }
+    
+
     
 }
