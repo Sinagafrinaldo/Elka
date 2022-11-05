@@ -22,7 +22,10 @@ Route::get('/kategori-barang', [UserController::class, 'kategori_barang']);
 Route::get('/cari', [UserController::class, 'cari']);
 Route::get('/list-kategori/{slug}', [UserController::class, 'listKategori']);
 Route::get('/detail/{slug}', [UserController::class, 'detail']); 
- 
+
+
+
+
 Route::prefix('admin')->group(function(){
     Route::get('/',[App\Http\Controllers\Admin\Auth\LoginController::class,'loginForm']);
     Route::get('/login',[App\Http\Controllers\Admin\Auth\LoginController::class,'loginForm'])->name('admin.login');
@@ -53,8 +56,15 @@ Route::prefix('admin')->group(function(){
     Route::get('/edit-kategori/{slug}',[App\Http\Controllers\Admin\HomeController::class,'editKategori']);
 
     Route::get('/daftar-obat/cari',[App\Http\Controllers\Admin\HomeController::class,'search']);
+    Route::get('/input-transaksi/harga',[App\Http\Controllers\Admin\TransaksiController::class,'index']);
+    Route::get('/input-transaksi/keranjang',[App\Http\Controllers\Admin\TransaksiController::class,'keranjang']);
+    Route::post('/tambah',[App\Http\Controllers\Admin\TransaksiController::class,'tambah2']);
+    Route::get('/laporan-penjualan/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sort']);
+    Route::get('/laporan-pemasukan/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sortPemasukan']);
+    Route::get('/laporan-barang-sisa/minim',[App\Http\Controllers\Admin\TransaksiController::class,'minim']);
+    Route::get('/laporan-barang-masuk/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sortBarangmasuk']);
 
-    
+
     Route::get('/kategori/hapus-kategori/{id}',[App\Http\Controllers\Admin\HomeController::class,'hapusKategori']);
     Route::get('/daftar-obat/hapus-barang/{id}',[App\Http\Controllers\Admin\HomeController::class,'hapusBarang']);
 });
