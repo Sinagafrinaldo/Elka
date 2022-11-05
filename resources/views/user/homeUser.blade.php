@@ -33,17 +33,17 @@
     </div>
 
     {{-- TENTANG KAMI --}}
-    <section class="p-5">
-        <div class="container p-10">
-            <div class="row">
+    <section class="p-4 pt-5">
+        <div class="container p-md-10">
+            <div class="row mb-5 ">
                 <div class="col-lg-5 col-md-12 col-12 d-flex">
-                    <div class="about-img align-self-center">
+                    <div class="about-img align-self-center mb-4 ">
                         <img src="./assets/3.jpg" alt="" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-md-5">
                     <div class="about-text">
-                        <h2>Tentang Kami</h2>
+                        <h2 class="d-flex justify-content-center justify-content-sm-start">Tentang Kami</h2>
                         <hr class="mt-1" style="border-width: 2px">
                         <p style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe vel
                             architecto qui necessitatibus
@@ -53,7 +53,9 @@
                             delectus doloremque amet iure blanditiis cum fuga, nostrum nesciunt accusantium maxime ratione
                             in vero repellat error dolor.
                         </p>
-                        <a href="/tentang-kami" class="btn btn-primary">Selengkapnya</a>
+                        <div class="d-flex justify-content-center justify-content-sm-start">
+                            <a href="/tentang-kami" class="btn btn-primary">Selengkapnya</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,12 +63,48 @@
     </section>
 
     {{-- LAYANAN --}}
-    <div class="layanan mb-5">
-        <img src="./assets/layanan.png" alt="" class="img-fluid">
+    <div class="layanan">
+        <img src="./assets/layanan.png" class="layanan-img">
+        <div class="layanan-desc">
+            <div class="about-text w-100">
+                <h2 class="text-center">PRODUK</h2>
+                <hr class="mt-4 mb-5" style="border-width: 2px">
+                <div class="row justify-content-center mb-5 ">
+                    <a href="" class="px-4 py-2 w-auto">
+                        <img src="./assets/layanan-icon/1.png">
+                    </a>
+                    <a href="" class="px-4 py-2 w-auto">
+                        <img src="./assets/layanan-icon/2.png">
+                    </a>
+                    <a href="" class="px-4 py-2 w-auto">
+                        <img src="./assets/layanan-icon/3.png">
+                    </a>
+                    <a href="" class="px-4 py-2 w-auto">
+                        <img src="./assets/layanan-icon/4.png">
+                    </a>
+                </div>
+
+                <h2 class="text-center">LAYANAN</h2>
+                <hr class="mt-4 mb-5" style="border-width: 2px">
+                <div class="row justify-content-center mb-5 cek-layanan">
+                    <div class="w-auto d-flex flex-column">
+                        <a href="/layanan/cek-kolesterol">Cek Kolesterol</a>
+                        <a href="/layanan/cek-asam-urat">Cek Asam Urat</a>
+                    </div>
+                    <div class="w-auto d-flex flex-column">
+                        <a href="/layanan/cek-gula-darah">Cek Gula Darah</a>
+                        <a href="/layanan/cek-tensi-darah">Cek Tensi Darah</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
+
+
     {{-- LOKASI --}}
-    <section class="pb-5 mb-5" id="lokasi">
+    <section class="p-4 mt-5 mb-5" id="lokasi">
         <div class="container p-10">
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-5">
@@ -97,8 +135,6 @@
 @section('style')
     <style>
         .carousel-item {
-            height: 100vh;
-            min-height: 300px;
             background: no-repeat scroll center scroll;
             -webkit-background-size: cover;
             background-size: cover;
@@ -116,9 +152,34 @@
             right: 0;
         }
 
-        .layanan {
-            background: no-repeat scroll center scroll;
-            background-size: cover;
+        .layanan-img {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+        }
+
+        .layanan-desc {
+            background-color: #000;
+            background: rgba(38, 45, 54, 0.81);
+            color: white;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-block: 4rem;
+            padding-inline: 5rem;
+        }
+
+        .cek-layanan a {
+            text-decoration: none;
+            color: black;
+            font-size: 14pt;
+            background-color: white;
+            border-radius: 10px;
+            padding-block: 18px;
+            padding-inline: 150px;
+            margin: 14px;
         }
     </style>
 @endsection

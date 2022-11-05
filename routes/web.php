@@ -22,6 +22,7 @@ Route::get('/kategori-barang', [UserController::class, 'kategori_barang']);
 Route::get('/cari', [UserController::class, 'cari']);
 Route::get('/list-kategori/{slug}', [UserController::class, 'listKategori']);
 Route::get('/detail/{slug}', [UserController::class, 'detail']); 
+Route::get('/layanan/{slug}',[UserController::class,'layanan']);
 
 
 

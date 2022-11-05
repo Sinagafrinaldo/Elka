@@ -78,4 +78,14 @@ class UserController extends Controller
     ]);
 
 	}
+
+
+    public function layanan(Request $request){
+
+        $title = ucwords(str_replace( "-", " ", $request->slug));
+
+        return view('user.layanan.detailLayanan', [
+            "title" => $title,
+        ]);
+	}
 }
