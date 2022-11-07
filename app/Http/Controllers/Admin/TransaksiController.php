@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 // use App\Http\Controllers\DateTime;
 // use DateTime;
-
+ 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -107,7 +107,8 @@ class TransaksiController extends Controller
                 if ($products->isEmpty()){
                     DB::table('laporan_pemasukan')->insert([
                         'tanggal' => $time,
-                        'total' =>$request->total
+                        'total' =>$request->total,
+                        'periode' => date('F Y')
                     ]);
                 }
 
@@ -120,6 +121,7 @@ class TransaksiController extends Controller
                 $output="";
                 $products=DB::table('struk')
                 ->whereBetween(  DB::raw('DATE(tanggal)'), [$request->tanggal1, $request->tanggal2])
+                ->orderby('tanggal')
                 ->get();
                 if($products){
                     foreach ($products as $key => $product) {
@@ -145,6 +147,7 @@ class TransaksiController extends Controller
                     $output="";
                     $products=DB::table('laporan_pemasukan')
                     ->whereBetween(  DB::raw('DATE(tanggal)'), [$request->tanggal1, $request->tanggal2])
+                    ->orderby('tanggal')
                     ->get();
                     if($products){
                         foreach ($products as $key => $product) {
@@ -190,6 +193,7 @@ class TransaksiController extends Controller
                     $output="";
                     $products=DB::table('laporan_barangmasuk')
                     ->whereBetween(  DB::raw('DATE(tanggal)'), [$request->tanggal1, $request->tanggal2])
+                    ->orderby('tanggal')
                     ->get();
                     if($products){
                         foreach ($products as $key => $product) {

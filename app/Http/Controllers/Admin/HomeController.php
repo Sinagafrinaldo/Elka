@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+
  
 class HomeController extends Controller
 { 
@@ -15,12 +16,61 @@ class HomeController extends Controller
     }
 
     public function index (){
-        $jumlah = DB::table('barang')->count();
+        $jumlah = DB::table('barang')->sum('sisa');
         $kategori = DB::table('kategori')->count();
+        $pendapatan = DB::table('laporan_pemasukan')
+        ->where('periode', date('F Y'))
+        ->sum('total');
+
+        $pendapatan_total = DB::table('laporan_pemasukan')
+        ->sum('total');
+
+        $pendapatan_list = DB::table('laporan_pemasukan')
+        ->where('periode', date('F Y'))
+        ->orderby('tanggal', 'asc')
+        ->get();
+
+        date_default_timezone_set('Asia/Jakarta');   
+        $time = date("Y-m-d H:i:s", time()); 
+
+        $data = array();
+        $laporan = DB::table('laporan_pemasukan')->select('periode')->orderby('tanggal')->distinct()->get();
+
+        $minim = DB::table('barang')
+        ->where('sisa' ,'<=', DB::raw('minimal'))
+        ->count();
+
+        $kadaluarsa = DB::table('barang')
+        ->where('kadaluarsa' ,'>=', $time  )
+        ->count();
+      
+
+
+        if ($laporan ){
+            $b = 1;
+            foreach ($laporan as $key => $l){
+                if ($b==1){
+                    array_push($data, $l->periode);
+                }
+                for ($i=0; $i< sizeof($data); $i++){
+                    if ($l->periode != $data[$i]){
+                        array_push($data, $l->periode);
+                    }
+                }
+                $b++;
+            }
+        }
         return view('dashboard.home' , [
             "title" => "dashboard",
             "jumlah"=>$jumlah,
-            "kategori"=>$kategori
+            "kategori"=>$kategori ,
+            "pendapatan"=>$pendapatan,
+            "pendapatan_total"=>$pendapatan_total,
+            "periode"=>$data,
+            "list" => $pendapatan_list,
+            "minim"=>$minim,
+            "kadaluarsa" =>$kadaluarsa
+
         ]); 
     }
     public function inventory (){
