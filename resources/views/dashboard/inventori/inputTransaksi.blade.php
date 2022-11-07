@@ -121,157 +121,157 @@
     });
 </script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        // $(document).ready(function () {
-        //     $('select').selectize({
-        //         sortField: 'text'
-        //     });
-        // });
 
-        var big_data = [];
-        var big2_data = [];
-        var totalHarga = 0;
-        function cekHarga() {
-            var a = 0
-            var b = 0;
-            for (var i = 0; i < big_data.length; i++) {
-                a = document.getElementById(big_data[i]).innerText;
-                a = Number(a)
-                b += a;
-            }
-            console.log(b);
-            document.getElementById("bigTotal").innerHTML = b;
+    // $(document).ready(function () {
+    //     $('select').selectize({
+    //         sortField: 'text'
+    //     });
+    // });
+
+    var big_data = [];
+    var big2_data = [];
+    var totalHarga = 0;
+    function cekHarga() {
+        var a = 0
+        var b = 0;
+        for (var i = 0; i < big_data.length; i++) {
+            a = document.getElementById(big_data[i]).innerText;
+            a = Number(a)
+            b += a;
         }
-        function save_data(data2, data3) {
-            let datapush = data2.replace(/ .*/, '');
-            datapush = 'total' + datapush + data3;
-            big_data.push(datapush);
-            $data2 = data2.replace(/ .*/, '') + data3;
-            big2_data.push($data2);
-            console.log(datapush);
-            console.log("bd", big_data);
-            console.log("bd2", big2_data);
-            cekHarga();
-        }
-        function delete_row(rowno) {
+        console.log(b);
+        document.getElementById("bigTotal").innerHTML = b;
+    }
+    function save_data(data2, data3) {
+        let datapush = data2.replace(/ .*/, '');
+        datapush = 'total' + datapush + data3;
+        big_data.push(datapush);
+        $data2 = data2.replace(/ .*/, '') + data3;
+        big2_data.push($data2);
+        console.log(datapush);
+        console.log("bd", big_data);
+        console.log("bd2", big2_data);
+        cekHarga();
+    }
 
-            function arrayRemove(arr, value) {
+    function delete_row(rowno) {
 
-                return arr.filter(function (ele) {
-                    return ele != value;
-                });
-            }
-            let temp = 'total' + rowno;
-            var result = arrayRemove(big_data, temp);
-            big_data = result;
-            let temp2 = rowno;
-            var result2 = arrayRemove(big2_data, temp2);
-            big2_data = result2;
+        function arrayRemove(arr, value) {
 
-            $('#' + rowno).remove();
-            cekHarga();
-        }
-
-        $('#jumlah').on('keyup change', function () {
-            $value = $('#jumlah').val();
-            $namaP = $('#produkList').val();
-            $.ajax({
-                type: 'get',
-                url: '{{URL::to("/admin/input-transaksi/harga")}}',
-                data: { 'harga': $value, 'namaP': $namaP },
-                success: function (data) {
-                    $('#output').html(data);
-                }
+            return arr.filter(function (ele) {
+                return ele != value;
             });
+        }
+        let temp = 'total' + rowno;
+        var result = arrayRemove(big_data, temp);
+        big_data = result;
+        let temp2 = rowno;
+        var result2 = arrayRemove(big2_data, temp2);
+        big2_data = result2;
+
+        $('#' + rowno).remove();
+        cekHarga();
+    }
+
+    $('#jumlah').on('keyup change', function () {
+        $value = $('#jumlah').val();
+        $namaP = $('#produkList').val();
+        $.ajax({
+            type: 'get',
+            url: '{{URL::to("/admin/input-transaksi/harga")}}',
+            data: { 'harga': $value, 'namaP': $namaP },
+            success: function (data) {
+                $('#output').html(data);
+            }
         });
-
-        $('#transaksi').on('click', function () {
-            let token = $("meta[name='csrf-token']").attr("content");
-
-            for (var i = 0; i < big2_data.length; i++) {
-                var tr = document.getElementById(big2_data[i]);
-                var td = tr.getElementsByTagName("td");
-                $nama = td[0].innerHTML;
-                $harga = td[1].innerHTML;
-                $harga = Number($harga);
-
-                $jumlah = td[2].innerHTML;
-                $jumlah = Number($jumlah);
-
-                $total = td[3].innerHTML;
-                $total = Number($total);
-
-                console.log("nama", $jumlah, " harga", $total)
-
-
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/admin/tambah',
-                    data: { 'nama': $nama, 'harga': $harga, 'jumlah': $jumlah, 'total': $total, "_token": "{{csrf_token()}}" },
-                    success: function (data) {
-                        window.location.href = '/admin/laporan-penjualan';
-                    },
-                });
-            }
-        })
-        $('#produkList').on('change', function () {
-            $value = $('#jumlah').val();
-            $namaP = $('#produkList').val();
-            $.ajax({
-                type: 'get',
-                url: '{{URL::to("/admin/input-transaksi/harga")}}',
-                data: { 'harga': $value, 'namaP': $namaP },
-                success: function (data) {
-                    $('#output').html(data);
-                }
-            });
-        })
-        $('#bayar').on('change', function () {
-            $value = $('#bayar').val();
-            $total = document.getElementById("bigTotal").innerText;
-            $total = Number($total)
-            $value = Number($value)
-            $kembali = $total - $value;
-            $('#kembalian').val($value - $total)
-
-        })
-        $('#keranjang').on('click', function () {
-            $value = $('#jumlah').val();
-            $namaP = $('#produkList').val();
-            $harga = $('#harga').val();
-            $.ajax({
-                type: 'get',
-                url: '{{URL::to("/admin/input-transaksi/keranjang")}}',
-                data: { 'harga': $value, 'namaP': $namaP },
-                success: function (data) {
-                    // $('#outputList').html(data);
-                    $(data).appendTo($("#outputList"));
-                    save_data($namaP, $value);
-                }
-            });
-        })
-
-        $("#nota").on("click", function () {
-            var divContents = $("#rincian").html();
-            $total = document.getElementById("bigTotal").innerText;
-            $total = Number($total);
-            $bayar = $('#bayar').val();
-            $kembali = $('#kembalian').val();
-            $deskripsi = $('textarea#deskripsi').val();
-            var printWindow = window.open('', '', 'height=400,width=800');
-            printWindow.document.write('<html><head><title>Apotek Elka Farma</title>');
-            printWindow.document.write('</head><body >');
-            printWindow.document.write(divContents);
-
-            printWindow.document.write('<hr><b>Total : Rp </b>', $total, '<br><b>Bayar: Rp </b>', $bayar, '<br><b>Kembalian: Rp </b>', $kembali, '<br><fieldset>Deskripsi : ', $deskripsi, '</fieldset>');
-            printWindow.document.write('</body></html>');
-            printWindow.document.close();
-            printWindow.print();
-        });
-
-
     });
+
+    $('#transaksi').on('click', function () {
+        let token = $("meta[name='csrf-token']").attr("content");
+
+        for (var i = 0; i < big2_data.length; i++) {
+            var tr = document.getElementById(big2_data[i]);
+            var td = tr.getElementsByTagName("td");
+            $nama = td[0].innerHTML;
+            $harga = td[1].innerHTML;
+            $harga = Number($harga);
+
+            $jumlah = td[2].innerHTML;
+            $jumlah = Number($jumlah);
+
+            $total = td[3].innerHTML;
+            $total = Number($total);
+
+            console.log("nama", $jumlah, " harga", $total)
+
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/admin/tambah',
+                data: { 'nama': $nama, 'harga': $harga, 'jumlah': $jumlah, 'total': $total, "_token": "{{csrf_token()}}" },
+                success: function (data) {
+                    window.location.href = '/admin/laporan-penjualan';
+                },
+            });
+        }
+    })
+    $('#produkList').on('change', function () {
+        $value = $('#jumlah').val();
+        $namaP = $('#produkList').val();
+        $.ajax({
+            type: 'get',
+            url: '{{URL::to("/admin/input-transaksi/harga")}}',
+            data: { 'harga': $value, 'namaP': $namaP },
+            success: function (data) {
+                $('#output').html(data);
+            }
+        });
+    })
+    $('#bayar').on('change', function () {
+        $value = $('#bayar').val();
+        $total = document.getElementById("bigTotal").innerText;
+        $total = Number($total)
+        $value = Number($value)
+        $kembali = $total - $value;
+        $('#kembalian').val($value - $total)
+
+    })
+    $('#keranjang').on('click', function () {
+        $value = $('#jumlah').val();
+        $namaP = $('#produkList').val();
+        $harga = $('#harga').val();
+        $.ajax({
+            type: 'get',
+            url: '{{URL::to("/admin/input-transaksi/keranjang")}}',
+            data: { 'harga': $value, 'namaP': $namaP },
+            success: function (data) {
+                // $('#outputList').html(data);
+                $(data).appendTo($("#outputList"));
+                save_data($namaP, $value);
+            }
+        });
+    })
+
+    $("#nota").on("click", function () {
+        var divContents = $("#rincian").html();
+        $total = document.getElementById("bigTotal").innerText;
+        $total = Number($total);
+        $bayar = $('#bayar').val();
+        $kembali = $('#kembalian').val();
+        $deskripsi = $('textarea#deskripsi').val();
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>Apotek Elka Farma</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(divContents);
+
+        printWindow.document.write('<hr><b>Total : Rp </b>', $total, '<br><b>Bayar: Rp </b>', $bayar, '<br><b>Kembalian: Rp </b>', $kembali, '<br><fieldset>Deskripsi : ', $deskripsi, '</fieldset>');
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+
+
 
 </script>
 
