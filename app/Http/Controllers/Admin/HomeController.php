@@ -121,8 +121,7 @@ class HomeController extends Controller
     }
     public function laporan_barangsisa (){
         $barang = DB::table('barang')
-		->orderby('tanggal_edit' , 'desc')
-		->paginate(8)->onEachSide(0);
+		->orderby('sisa','desc')->paginate(8)->onEachSide(0);
         return view('dashboard.laporanScreen.barangsisa', [
             "title" => "Laporan Barang Sisa",
             "barang" => $barang
@@ -194,25 +193,42 @@ class HomeController extends Controller
             'harga' =>'required'
 
 		]);
-		$img = $request->file('image');
-        $ext = $img->getClientOriginalExtension();
-        $name =  $request->image->getClientOriginalName();
-        $path = public_path('uploads');
-        $img->move($path, $name);
-		$content = $request->input('deskripsi');
-		$slug =  Str::slug($request->nama,"-");
-		DB::table('barang')->insert([
-			'nama' => $request->nama,
-			'kategori' => $request->kategori,
-			'deskripsi' => $content,
-            'sisa' =>$request->jumlah,
-            'minimal' =>$request->minimal,
-            'maksimal' =>$request->maksimal,
-            'kadaluarsa' =>$request->kadaluarsa,
-			'image' =>$name,
-			'slug' =>$slug,
-            'harga' =>$request->harga,
-		]);
+        $old = DB::table('barang')->get();
+        foreach ($old as $key =>$product){
+            if ($product->nama == $request->nama){
+                $tersedia = 1;
+                $error = 'Nama obat sudah terdaftar didatabase';
+                $kategori = DB::table('kategori')->get();
+
+        return view('dashboard.inventori.tambahObat', [
+            "title" => "Input Obat",
+            "kategori" => $kategori,
+            "error" =>$error
+        ]); 
+            }
+        }
+        if ($tersedia != 1){
+            $img = $request->file('image');
+            $ext = $img->getClientOriginalExtension();
+            $name =  $request->image->getClientOriginalName();
+            $path = public_path('uploads');
+            $img->move($path, $name);
+            $content = $request->input('deskripsi');
+            $slug =  Str::slug($request->nama,"-");
+            DB::table('barang')->insert([
+                'nama' => $request->nama,
+                'kategori' => $request->kategori,
+                'deskripsi' => $content,
+                'sisa' =>$request->jumlah,
+                'minimal' =>$request->minimal,
+                'maksimal' =>$request->maksimal,
+                'kadaluarsa' =>$request->kadaluarsa,
+                'image' =>$name,
+                'slug' =>$slug,
+                'harga' =>$request->harga,
+            ]);
+        }
+	
 		return redirect('/admin/daftar-obat');
 	
 	}
