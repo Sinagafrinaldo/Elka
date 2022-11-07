@@ -1,5 +1,6 @@
 <link rel="shortcut icon" href="/assets/images/icon.svg" type="image/x-icon">
 <meta name="_token" content="{!! csrf_token() !!}" />
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
     integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
@@ -211,7 +212,12 @@
                 url: '/admin/tambah',
                 data: { 'nama': $nama, 'harga': $harga, 'jumlah': $jumlah, 'total': $total, "_token": "{{csrf_token()}}" },
                 success: function (data) {
-                    window.location.href = '/admin/laporan-penjualan';
+                    Swal.fire({
+                        title: 'Sukses!',
+                        text: 'Data transaksi berhasil di input!!',
+                        icon: 'succes',
+                    })
+                    window.location.reload()
                 },
             });
         }

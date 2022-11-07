@@ -36,7 +36,7 @@
         <div class="d-flex align-items-center col-lg-3 col-sm-4 ms-auto">
             <i class="fa-solid fa-filter me-3" style="font-size: 14pt"></i>
             <select id="jenis" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>-- Pilih Kategori --</option>
+                <option value="" selected>-- Pilih Kategori --</option>
                 @foreach ($kategori as $k)
                 <option value="{{$k->nama}}" name="{{$k->nama}}">{{$k->nama}}</option>
                 @endforeach

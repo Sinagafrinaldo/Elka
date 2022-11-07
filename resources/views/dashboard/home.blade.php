@@ -1,5 +1,7 @@
 <link rel="shortcut icon" href="/assets/images/icon.svg" type="image/x-icon">
 <title>Dashboard Admin || Elka Farma</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 @extends('layouts._dashboard.app')
 
 @section('content')
@@ -23,25 +25,17 @@
                 style="border: solid 1px #FED600; border-radius: 6px;">
                 <div class="d-block text-center px-3 pt-2">
                     <img src="/assets/icon-dashboard/money.png" width="40px" height="40px" />
-                    <div class="fs-5 mt-2">Rp. 2.240.000,-</div>
+                    <div class="fs-5 mt-2">Rp. {{number_format($pendapatan)}},-</div>
                     <div class="row mb-2">
                         <div class="col-5">
                             <h6 class="my-2">Pendapatan: </h6>
                         </div>
                         <div class="col">
                             <select class="form-select form-select-sm border-0" aria-label=".form-select-sm example">
-                                <option value="1">Jan 2022</option>
-                                <option value="2">Feb 2022</option>
-                                <option value="3">Mar 2022</option>
-                                <option value="1">Apr 2022</option>
-                                <option value="2">Mei 2022</option>
-                                <option value="3">Jun 2022</option>
-                                <option value="1">Jul 2022</option>
-                                <option value="2">Aug 2022</option>
-                                <option value="3">Sep 2022</option>
-                                <option value="1">Okt 2022</option>
-                                <option value="2">Nov 2022</option>
-                                <option value="3">Des 2022</option>
+
+                                @foreach ($periode as $p)
+                                <option value="{{$p}}" {{date('F Y')==$p ? "selected" : "" }}>{{$p}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -77,7 +71,7 @@
                 style="border: solid 1px #01A768; border-radius: 6px;">
                 <div class="d-block text-center px-3 pt-2">
                     <img src="/assets/icon-dashboard/plus_P.png" width="40px" height="40px" />
-                    <div class="fs-5 mt-2">01 Obat</div>
+                    <div class="fs-5 mt-2">{{$kadaluarsa}} Obat</div>
                     <div class="d-flex mb-2 justify-content-center">
                         <h6 class="me-2 my-2">Obat Kadaluarsa </h6>
                     </div>
@@ -95,12 +89,12 @@
                 style="border: solid 1px #F0483E; border-radius: 6px;">
                 <div class="d-block text-center px-3 pt-2">
                     <img src="/assets/icon-dashboard/danger.png" width="40px" height="40px" />
-                    <div class="fs-5 mt-2">02 Obat</div>
+                    <div class="fs-5 mt-2">{{$minim}} Obat</div>
                     <div class="d-flex mb-2 justify-content-center">
                         <h6 class="me-2 my-2">Kekurangan Stok</h6>
                     </div>
                 </div>
-                <a href="{{ route('admin.daftarObat') }}"
+                <a href="/admin/laporan-barang-sisa"
                     class="d-flex p-2 badge text-dark justify-content-center text-decoration-none"
                     style="background-color: rgba(240, 72, 62, 0.3)">
                     Lihat Detail
@@ -154,7 +148,7 @@
                         <span>Jumlah Pembeli</span>
                     </div>
                     <div class="col">
-                        <h5 class="fw-bolder">Rp. 2.240.000</h5>
+                        <h5 class="fw-bolder">Rp. {{number_format($pendapatan_total)}},-</h5>
                         <span>Pendapatan</span>
                     </div>
                 </div>
@@ -164,26 +158,31 @@
         {{-- Penjualan Bulanan --}}
         <div class="col-lg-6 col-md-11 col-sm-9 border border-2 m-2 p-0">
             <div class="d-flex p-3 py-2 border-bottom border-2">
-                <h6 class="w-100">Penjualanan Bulanan</h6>
+                <h6 class="w-100">Pemasukan Bulanan</h6>
                 <select class="form-select form-select-sm border-0" aria-label=".form-select-sm example">
-                    <option value="1">Jan 2022</option>
-                    <option value="2">Feb 2022</option>
-                    <option value="3">Mar 2022</option>
-                    <option value="1">Apr 2022</option>
-                    <option value="2">Mei 2022</option>
-                    <option value="3">Jun 2022</option>
-                    <option value="1">Jul 2022</option>
-                    <option value="2">Aug 2022</option>
-                    <option value="3">Sep 2022</option>
-                    <option value="1">Okt 2022</option>
-                    <option value="2">Nov 2022</option>
-                    <option value="3">Des 2022</option>
+                    @foreach ($periode as $p)
+                    <option value="{{$p}}" {{date('F Y')==$p ? "selected" : "" }}>{{$p}}</option>
+                    @endforeach
                 </select>
 
             </div>
+            <div>
+                <canvas id="myChart" style="width: 900px; height: 500px"></canvas>
+            </div>
         </div>
+
+        @php $label=array(); $data=array(); @endphp
+
+        @foreach($list as $key => $value)
+        @php
+        array_push($label, substr($value->tanggal, -2));
+        array_push($data, $value->total);
+        @endphp
+        @endforeach
+
     </div>
 </div>
+
 
 <style>
     .form-select {
@@ -194,4 +193,63 @@
         font-weight: bold;
     }
 </style>
+
+
+<?php
+    $name = 'PHP variable';
+    echo '<script>';
+    echo 'var labels = ' . json_encode($label) . ';';
+    echo '</script>';
+?>
+
+<?php
+    $name = 'PHP variable';
+    echo '<script>';
+    echo 'var datas = ' . json_encode($data) . ';';
+    echo '</script>';
+?>
+<script>
+
+
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Data Pemasukan',
+            backgroundColor: '#109CF1',
+            borderColor: '#109CF1',
+
+            data: datas
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Pemasukan Rp'
+                    },
+
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Tanggal'
+                    }
+                }
+            }
+        }
+    };
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
 @endsection
