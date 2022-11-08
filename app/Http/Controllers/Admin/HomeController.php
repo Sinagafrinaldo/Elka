@@ -194,6 +194,7 @@ class HomeController extends Controller
 
 		]);
         $old = DB::table('barang')->get();
+        $tersedia = 0;
         foreach ($old as $key =>$product){
             if ($product->nama == $request->nama){
                 $tersedia = 1;
@@ -226,6 +227,11 @@ class HomeController extends Controller
                 'image' =>$name,
                 'slug' =>$slug,
                 'harga' =>$request->harga,
+            ]);
+            DB::table('laporan_barangmasuk')->insert([
+                'nama' => $request->nama,
+                'kategori' =>$request->kategori,
+                'jumlah' => $request->jumlah
             ]);
         }
 	
