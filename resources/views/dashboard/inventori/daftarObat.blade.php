@@ -27,10 +27,10 @@
     <div class="d-flex">
         <div class="col-5">
             <form class="d-flex mt-2">
-                <input id="search" type="text" class="form-control me-2" type="search" placeholder="Search"
-                    aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"><i
-                        class="fa-solid fa-magnifying-glass"></i></button>
+                <input id="search" type="text" class="form-control me-2" type="search"
+                    placeholder="Nama/kategori obat.." aria-label="Search">
+                <!-- <button class="btn btn-outline-success" type="submit"><i
+                        class="fa-solid fa-magnifying-glass"></i></button> -->
             </form>
         </div>
         <div class="d-flex align-items-center col-lg-3 col-sm-4 ms-auto">

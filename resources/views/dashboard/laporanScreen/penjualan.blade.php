@@ -37,7 +37,9 @@
         </tbody>
     </table>
 </div>
-
+<div class="pagination justify-content-center">
+    {{ $laporan->links() }}
+</div>
 
 <script type="text/javascript">
     $('#tampil').on('click', function () {

@@ -19,6 +19,9 @@
         <div class="col-6 mb-3">
             <div class="fs-6 mb-1">Nama Kategori</div>
             <input name="nama" type="text" class="bg-light form-control">
+            @error('nama')
+            <span class="text-danger">{{ $message }} </span>
+            @enderror
         </div>
         <div class="col-6 mb-3">
             <div class="fs-6 mb-1">Upload Gambar</div>
@@ -26,7 +29,11 @@
                 <label class="input-group-text bg-secondary text-light px-4" for="inputGroupFile">Choose File</label>
                 <input name="image" type="file" class="form-control border-0 bg-transparent" id="inputGroupFile"
                     onchange="loadFile(event)">
+
             </div>
+            @error('image')
+            <span class="text-danger">{{ $message }} </span>
+            @enderror
             <img id="output" width="200" class="py-3" />
         </div>
 

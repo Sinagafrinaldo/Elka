@@ -33,7 +33,8 @@
                     <option selected disabled>-- Pilih Obat --</option>
                     @foreach ($barang as $b)
 
-                    <option value="{{$b->nama}}" name="{{$b->nama}}">{{$b->nama}} - Stok : {{$b->sisa}}</option>
+                    <option value="{{$b->nama}}" name="{{$b->nama}}" {{ $b->sisa <= 0 ? 'disabled' : '' }}>
+                            {{$b->nama}} - Stok : {{$b->sisa}}</option>
 
                     @endforeach
                 </select>
@@ -118,9 +119,8 @@
 <script type="text/javascript">
     $.ajaxSetup({
         headers:
-            { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-    });
-</script>
+            { ' X-CSRF-TOKEN': $('meta[name="_token" ]').attr('content') }
+    }); </script>
 <script type="text/javascript">
 
     // $(document).ready(function () {

@@ -20,6 +20,9 @@
             <div class="col">
                 <div class="fs-6 mb-1">Nama Obat</div>
                 <input name="nama" type="text" class="bg-light form-control" required>
+                @if (isset($error))
+                <span style="color: red"> {{ $error }}</span>
+                @endif
             </div>
             <div class="col">
                 <div class="fs-6 mb-1">Jumlah</div>
