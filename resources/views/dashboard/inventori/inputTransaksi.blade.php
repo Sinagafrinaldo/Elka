@@ -33,8 +33,8 @@
                     <option selected disabled>-- Pilih Obat --</option>
                     @foreach ($barang as $b)
 
-                    <option value="{{$b->nama}}" name="{{$b->nama}}" {{ $b->sisa <= 0 ? 'disabled' : '' }}>
-                            {{$b->nama}} - Stok : {{$b->sisa}}</option>
+                    <option value="{{$b->nama}}" name="{{$b->nama}}" @if($b->sisa <= 0) disabled @endif>{{$b->nama}} -
+                            Stok : {{$b->sisa}}</option>
 
                     @endforeach
                 </select>
@@ -45,6 +45,7 @@
                     <input id="jumlah" type="number" min="0" class="form-control bg-transparent border-secondary"
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value=1>
                 </div>
+                <div id="validasiJumlah"></div>
             </div>
             <div class="px-4 mb-3">
                 <h6>Harga</h6>
@@ -119,8 +120,9 @@
 <script type="text/javascript">
     $.ajaxSetup({
         headers:
-            { ' X-CSRF-TOKEN': $('meta[name="_token" ]').attr('content') }
-    }); </script>
+            { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+    });
+</script>
 <script type="text/javascript">
 
     // $(document).ready(function () {
@@ -155,6 +157,7 @@
         cekHarga();
     }
 
+
     function delete_row(rowno) {
 
         function arrayRemove(arr, value) {
@@ -177,6 +180,16 @@
     $('#jumlah').on('keyup change', function () {
         $value = $('#jumlah').val();
         $namaP = $('#produkList').val();
+        var str = $("#produkList option:selected").text();
+        var stok = str.split(' ').pop();
+        stok = Number(stok);
+        var input = document.getElementById("jumlah");
+        input.setAttribute("max", stok);
+        $harga = $('#harga').val();
+        if ($value > stok) {
+            document.getElementById("jumlah").value = stok;
+            $value = stok
+        }
         $.ajax({
             type: 'get',
             url: '{{URL::to("/admin/input-transaksi/harga")}}',
@@ -205,24 +218,30 @@
 
             console.log("nama", $jumlah, " harga", $total)
 
-
-
             $.ajax({
                 type: 'POST',
                 url: '/admin/tambah',
                 data: { 'nama': $nama, 'harga': $harga, 'jumlah': $jumlah, 'total': $total, "_token": "{{csrf_token()}}" },
                 success: function (data) {
-                    Swal.fire({
-                        title: 'Sukses!',
-                        text: 'Data transaksi berhasil di input!!',
-                        icon: 'succes',
-                    })
+
                     window.location.reload()
+
                 },
             });
+            Swal.fire({
+                title: 'Sukses!',
+                text: 'Data transaksi berhasil di input!!',
+                icon: 'succes',
+            })
         }
     })
     $('#produkList').on('change', function () {
+        var str = $("#produkList option:selected").text();
+        var stok = str.split(' ').pop();
+        stok = Number(stok);
+        var input = document.getElementById("jumlah");
+        input.setAttribute("max", stok);
+
         $value = $('#jumlah').val();
         $namaP = $('#produkList').val();
         $.ajax({

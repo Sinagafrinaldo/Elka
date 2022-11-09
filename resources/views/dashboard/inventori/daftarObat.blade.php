@@ -45,7 +45,9 @@
     </div>
 
     {{-- Table --}}
-    <?php $a = 1; ?>
+    <?php $a = 1; 
+$hal = $barang->currentPage();
+?>
     <div class="row mt-3 mx-1 p-2 bg-white">
 
         <table class="table table-hover table-responsive text-center" style="color: #656a6e">
@@ -67,7 +69,7 @@
 
                 @foreach ($barang as $b)
                 <tr>
-                    <th scope="row">{{ $a }}</th>
+                    <th scope="row">{{ (($hal-1) * 10) + $a }}</th>
                     <td>{{ $b->id }} </td>
                     <td>{{ $b->nama }}</td>
 
@@ -94,7 +96,7 @@
 
     </div>
 </div>
-<div class="pagination justify-content-center">
+<div id="paginasi" class="pagination justify-content-center">
     {{ $barang->links() }}
 </div>
 
@@ -114,12 +116,20 @@
 
     $('#jenis').on('change', function () {
         $value = $(this).val();
+
         $.ajax({
             type: 'get',
             url: '{{URL::to("/admin/daftar-obat/cari")}}',
             data: { 'search': $value },
             success: function (data) {
                 $('#tbodyy').html(data);
+                if ($value == "") {
+                    $("#paginasi").show();
+                } else {
+
+
+                    $("#paginasi").hide();
+                }
             }
         });
     })

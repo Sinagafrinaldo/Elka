@@ -7,7 +7,9 @@
 
 @section('table')
 {{-- Table --}}
-<?php $a = 1; ?>
+<?php $a = 1; 
+$hal = $barang->currentPage();
+?>
 <div class="row mt-3 mx-1 p-2 bg-white" id="rincian">
     <table class="table table-hover table-responsive text-center" style="color: #656a6e">
         <thead>
@@ -23,7 +25,7 @@
         <tbody id="output">
             @foreach ($barang as $b)
             <tr>
-                <th scope="row">{{ $a }}</th>
+                <th scope="row">{{ (($hal-1) * 8) + $a }}</th>
                 <td> {{$b->id}} </td>
                 <td>{{$b->nama}}</td>
                 <td>{{$b->kategori}}</td>
@@ -35,17 +37,28 @@
         </tbody>
     </table>
 </div>
-<div class="pagination justify-content-center">
+<div id="paginasi" class="pagination justify-content-center">
     {{ $barang->links() }}
 </div>
 <script type="text/javascript">
     $("#nota").on("click", function () {
         var divContents = $("#rincian").html();
-
-        var printWindow = window.open('', '', 'height=400,width=800');
-        printWindow.document.write('<html><head><title>Apotek Elka Farma</title><h4>Barang Masuk</h4>');
+        var htmlToPrint = '' +
+            '<style type="text/css">' +
+            'table, th, td {' +
+            'border:1px solid;' +
+            'border-collapse:collapse;' +
+            'padding:0.8em;' +
+            '}' +
+            'body {' +
+            'align-self:center;' +
+            '}' +
+            '</style>';
+        htmlToPrint += divContents;
+        var printWindow = window.open('', '', 'height=800,width=1600');
+        printWindow.document.write('<html><head><h4>Barang Sisa</h4>');
         printWindow.document.write('</head><body >');
-        printWindow.document.write(divContents);
+        printWindow.document.write(htmlToPrint);
 
         printWindow.document.write('</body></html>');
         printWindow.document.close();
@@ -65,6 +78,7 @@
             success: function (data) {
                 $('#output').html(data);
                 console.log('Sukses')
+                $("#paginasi").hide();
             },
 
         });
