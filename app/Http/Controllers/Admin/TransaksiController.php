@@ -179,8 +179,9 @@ class TransaksiController extends Controller
                             <td>'.$product->kategori.'</td>
                             <td style="color: #F0483E"><b>'.$product->sisa.'</b></td>
                             tr>';
+                            $a++;
                             }
-                        $a++;
+                        
                         }
                     }
                     return Response($output);
@@ -212,4 +213,31 @@ class TransaksiController extends Controller
                     return Response($output);
                 }
             }
+        public function periodeSelect (Request $request){
+            $label=array(); 
+            $data=array();
+            $datas=array();
+            $list = DB::table('laporan_pemasukan')
+            ->where('periode',$request->search)
+            ->orderby('tanggal', 'asc')
+            ->get();
+
+            foreach($list as $key => $value){
+                array_push($label, substr($value->tanggal, -2));
+                array_push($data, $value->total);
+             }
+             array_push($datas, $label);
+             array_push($datas, $data);
+
+             return Response($datas);
+            }
+
+            public function periodePendapatan (Request $request){
+                $pendapatan = DB::table('laporan_pemasukan')
+                ->where('periode', $request->search)
+                ->sum('total');
+    
+                $output  = '  <div id="outputPendapatan" class="fs-5 mt-2">Rp. '.number_format($pendapatan).',-</div>';
+                 return Response($output);
+                }
 }

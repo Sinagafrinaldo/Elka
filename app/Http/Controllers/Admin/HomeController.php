@@ -22,6 +22,10 @@ class HomeController extends Controller
         ->where('periode', date('F Y'))
         ->sum('total');
 
+        $pembeli = DB::table('struk')
+        ->distinct('tanggal')
+        ->count();
+
         $pendapatan_total = DB::table('laporan_pemasukan')
         ->sum('total');
 
@@ -69,7 +73,8 @@ class HomeController extends Controller
             "periode"=>$data,
             "list" => $pendapatan_list,
             "minim"=>$minim,
-            "kadaluarsa" =>$kadaluarsa
+            "kadaluarsa" =>$kadaluarsa,
+            "pembeli" =>$pembeli
 
         ]); 
     }
@@ -122,6 +127,8 @@ class HomeController extends Controller
     public function laporan_barangsisa (){
         $barang = DB::table('barang')
 		->orderby('sisa','desc')->paginate(8)->onEachSide(0);
+    //    print_r(gettype($barang));
+  
         return view('dashboard.laporanScreen.barangsisa', [
             "title" => "Laporan Barang Sisa",
             "barang" => $barang
@@ -402,7 +409,7 @@ class HomeController extends Controller
                 $products=DB::table('barang')
                 ->where('nama','LIKE','%'.$request->search."%")
                 ->orwhere('kategori','LIKE','%'.$request->search."%")
-                ->get();
+                ->paginate(10)->onEachSide(0);
             
                 // if ($products->isEmpty()){
                 //     $products=DB::table('barang') ->get();
