@@ -64,6 +64,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/laporan-pemasukan/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sortPemasukan']);
     Route::get('/laporan-barang-sisa/minim',[App\Http\Controllers\Admin\TransaksiController::class,'minim']);
     Route::get('/laporan-barang-masuk/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sortBarangmasuk']);
+    Route::get('/periode-select',[App\Http\Controllers\Admin\TransaksiController::class,'periodeSelect']);
+    Route::get('/periode-pendapatan',[App\Http\Controllers\Admin\TransaksiController::class,'periodePendapatan']);
 
 
     Route::get('/kategori/hapus-kategori/{id}',[App\Http\Controllers\Admin\HomeController::class,'hapusKategori']);
