@@ -5,15 +5,15 @@
 @section('content')
     <div class="mx-4 mt-2">
         <h4 class="mb-4">Barang Kadaluarsa</h4>
-        <div class="d-flex">
-            <div class="col-5">
+        <div class="row">
+            <div class="col-12 col-md-6">
                 <form class="d-flex mt-2">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit"><i
                             class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
-            <div class="d-flex align-items-center col-lg-3 col-sm-4 ms-auto">
+            <div class="d-flex align-items-center col-7 col-md-5 col-lg-3 ms-auto">
                 <i class="fa-solid fa-filter me-3" style="font-size: 14pt"></i>
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>-- Pilih Jenis --</option>

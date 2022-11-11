@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- CAROUSEL SLIDER --}}
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -13,20 +13,22 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="./assets/1.jpg" class="d-block w-100 h-10" alt="slider1">
+                <img src="/assets/1.png" class="d-block w-100">
             </div>
             <div class="carousel-item">
-                <img src="./assets/2.jpg" class="d-block w-100 h-10" alt="slider2">
+                <img src="/assets/2.png" class="d-block w-100">
             </div>
             <div class="carousel-item">
-                <img src="./assets/3.jpg" class="d-block w-100 h-10" alt="slider3">
+                <img src="/assets/3.png" class="d-block w-100">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -38,7 +40,7 @@
             <div class="row mb-5 ">
                 <div class="col-lg-5 col-md-12 col-12 d-flex">
                     <div class="about-img align-self-center mb-4 ">
-                        <img src="./assets/3.jpg" alt="" class="img-fluid">
+                        <img src="./assets/p.jpg" alt="" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-md-5">
@@ -64,40 +66,38 @@
 
     {{-- LAYANAN --}}
     <div class="layanan">
-        <img src="./assets/layanan.png" class="layanan-img">
-        <div class="layanan-desc">
-            <div class="about-text w-100">
-                <h2 class="text-center">PRODUK</h2>
-                <hr class="mt-4 mb-5" style="border-width: 2px">
-                <div class="row justify-content-center mb-5 ">
-                    <a href="" class="px-4 py-2 w-auto">
-                        <img src="./assets/layanan-icon/1.png">
-                    </a>
-                    <a href="" class="px-4 py-2 w-auto">
-                        <img src="./assets/layanan-icon/2.png">
-                    </a>
-                    <a href="" class="px-4 py-2 w-auto">
-                        <img src="./assets/layanan-icon/3.png">
-                    </a>
-                    <a href="" class="px-4 py-2 w-auto">
-                        <img src="./assets/layanan-icon/4.png">
-                    </a>
-                </div>
+        <div class="about-text w-100">
+            <h2 class="text-center">PRODUK</h2>
+            <hr class="mt-4 mb-3" style="border-width: 2px">
+            <div class="row justify-content-center mb-5 ">
+                <a href="" class=" m-1 m-sm-3 w-auto">
+                    <img src="./assets/layanan-icon/1.png">
+                </a>
+                <a href="" class=" m-1 m-sm-3 w-auto">
+                    <img src="./assets/layanan-icon/2.png">
+                </a>
+                <a href="" class=" m-1 m-sm-3 w-auto">
+                    <img src="./assets/layanan-icon/3.png">
+                </a>
+                <a href="" class=" m-1 m-sm-3 w-auto">
+                    <img src="./assets/layanan-icon/4.png">
+                </a>
+            </div>
 
-                <h2 class="text-center">LAYANAN</h2>
-                <hr class="mt-4 mb-5" style="border-width: 2px">
-                <div class="row justify-content-center mb-5 cek-layanan">
-                    <div class="w-auto d-flex flex-column">
-                        <a href="/layanan/cek-kolesterol">Cek Kolesterol</a>
-                        <a href="/layanan/cek-asam-urat">Cek Asam Urat</a>
-                    </div>
-                    <div class="w-auto d-flex flex-column">
-                        <a href="/layanan/cek-gula-darah">Cek Gula Darah</a>
-                        <a href="/layanan/cek-tensi-darah">Cek Tensi Darah</a>
-                    </div>
+            <h2 class="text-center">LAYANAN</h2>
+            <hr class="mt-4 mb-3" style="border-width: 2px">
+            <div class="cek-layanan">
+                <div class="row">
+                    <a href="/layanan/cek-kolesterol">Cek Kolesterol</a>
+                    <a href="/layanan/cek-asam-urat">Cek Asam Urat</a>
+                </div>
+                <div class="row">
+                    <a href="/layanan/cek-gula-darah">Cek Gula Darah</a>
+                    <a href="/layanan/cek-tensi-darah">Cek Tensi Darah</a>
                 </div>
 
             </div>
+
         </div>
     </div>
 
@@ -134,52 +134,53 @@
 
 @section('style')
     <style>
-        .carousel-item {
-            background: no-repeat scroll center scroll;
-            -webkit-background-size: cover;
+        .layanan {
+            background: url('./assets/layanan.png');
             background-size: cover;
-        }
-
-        .carousel-item::before {
-            content: "";
-            display: block;
-            background: #000;
-            opacity: 0.3;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-        }
-
-        .layanan-img {
-            position: absolute;
-            z-index: -1;
-            width: 100%;
-        }
-
-        .layanan-desc {
-            background-color: #000;
-            background: rgba(38, 45, 54, 0.81);
+            background-position: center;
             color: white;
             height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 1rem;
             padding-block: 4rem;
-            padding-inline: 5rem;
+        }
+
+        .layanan a img {
+            width: 10vmax;
+        }
+
+        .layanan a {
+            padding: 0;
+        }
+
+        .layanan .text-center {
+            font-size: 1.5rem;
+        }
+
+        .cek-layanan {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .layanan h2 {
+            font-size: 2rem;
         }
 
         .cek-layanan a {
             text-decoration: none;
             color: black;
-            font-size: 14pt;
+            font-size: 1.06rem;
             background-color: white;
             border-radius: 10px;
-            padding-block: 18px;
-            padding-inline: 150px;
-            margin: 14px;
+            width: 35vw;
+            padding-block: 1vw;
+            margin: 0.5rem;
+            text-align: center;
         }
     </style>
 @endsection

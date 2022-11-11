@@ -26,25 +26,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link {{ $title === 'Home' ? 'active' : '' }}" aria-current="page"
                             href="/">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link {{ $title === 'Cek Stok Obat' || $title === 'Detail' ? 'active' : '' }}"
                             href="/cek-stok">Daftar
                             Obat</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link {{ $title === 'Kategori' || str_contains($title, 'Detail Kategori') ? 'active' : '' }}"
                             href="/kategori-barang">Kategori
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link {{ $title === 'Tentang Kami' ? 'active' : '' }}" href="/tentang-kami">Tentang
                             Kami</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a href="/admin" class="btn btn-primary ms-lg-3">LOGIN</a>
                     </li>
                 </ul>
@@ -60,7 +60,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

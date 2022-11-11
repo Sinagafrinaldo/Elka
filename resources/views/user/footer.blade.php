@@ -87,7 +87,7 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
-        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Apotek Elka Farma DEV</a>
+        <a class="text-reset fw-bold text-decoration-none " href="https://mdbootstrap.com/">Apotek Elka Farma DEV</a>
     </div>
     <!-- Copyright -->
 </footer>

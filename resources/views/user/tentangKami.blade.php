@@ -2,9 +2,9 @@
 
 @section('content')
     {{-- TENTANG KAMI --}}
-    <section class="p-5">
-        <div class="container p-10">
-            <div class="row text-center">
+    <section class="p-sm-5 p-3">
+        <div class="container mb-5">
+            <div class="row p-4 p-sm-5 text-center bg-white shadow">
                 <h2>Tentang Kami</h2>
                 <hr class="mt-1" style="border-width: 2px">
                 <div class="row">
@@ -26,12 +26,11 @@
             </div>
 
         </div>
-    </section>
 
-    {{-- LOKASI --}}
-    <section class="pb-5 mb-5">
-        <div class="container p-10">
-            <div class="row">
+
+        {{-- LOKASI --}}
+        <div class="container mb-5">
+            <div class="row p-3 bg-white shadow">
                 <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-5">
                     <div class="about-text">
                         <h2>Lokasi Apotek</h2>
@@ -55,4 +54,22 @@
             </div>
         </div>
     </section>
+
+    <style>
+        body {
+            background-color: #F6F6F6;
+        }
+
+        @media (max-width: 400px) {
+            img {
+                width: 230px;
+            }
+        }
+
+        @media (min-width: 401px) {
+            img {
+                width: 50%;
+            }
+        }
+    </style>
 @endsection
