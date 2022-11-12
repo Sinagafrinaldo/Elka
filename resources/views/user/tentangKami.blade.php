@@ -4,14 +4,14 @@
     {{-- TENTANG KAMI --}}
     <section class="p-sm-5 p-3">
         <div class="container mb-5">
-            <div class="row p-4 p-sm-5 text-center bg-white shadow">
+            <div class="row p-3 p-sm-5 text-center bg-white shadow">
                 <h2>Tentang Kami</h2>
                 <hr class="mt-1" style="border-width: 2px">
-                <div class="row">
+                <div class="d-flex flex-column">
                     <div class="about-img align-self-center">
                         <img src="./assets/tentang.png" alt="" class="img-fluid">
                     </div>
-                    <div class="about-text p-4 px-0">
+                    <div class="about-text px-0">
                         <div class="fs-5 mt-3 mb-2 text-start fw-bold">What is Lorem Ipsum?</div>
                         <p style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe vel
                             architecto qui necessitatibus
@@ -62,7 +62,7 @@
 
         @media (max-width: 400px) {
             img {
-                width: 230px;
+                width: 100%;
             }
         }
 

@@ -116,6 +116,14 @@
                         </div>
                     </body>
                     </html>
+                    <style>
+                        body{
+                            padding-top: 30px;
+                        }
+                        @page {
+                            margin: 0;
+                        }
+                    </style>
                 `)
             printWindow.document.close();
             printWindow.print();

@@ -59,6 +59,12 @@
     <script type="text/javascript">
         $("#nota").on("click", function() {
             var title = "Laporan Barang Masuk"
+
+            // Tanggal sekarang
+            var today = new Date();
+            today = String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0') +
+                '-' + today.getFullYear();
+
             var divContents = $("#rincian").html();
             var htmlToPrint = '' +
                 '<style type="text/css">' +
@@ -100,7 +106,7 @@
                         <div style="display: flex; margin-top: 3rem;" >
                             <div style="margin-left: auto; margin-right: 2rem;" >
                                 <div style="margin-bottom: 5rem;" >
-                                    Bandar Lampung, 11 Juni 2022
+                                    Bandar Lampung, ` + today + `
                                 </div>
                                 <div style="text-align: center;" >
                                     (Pemilik Toko)
@@ -109,6 +115,14 @@
                         </div>
                     </body>
                     </html>
+                    <style>
+                        body{
+                            padding-top: 30px;
+                        }
+                        @page {
+                            margin: 0;
+                        }
+                    </style>
                 `)
             printWindow.document.close();
             printWindow.print();

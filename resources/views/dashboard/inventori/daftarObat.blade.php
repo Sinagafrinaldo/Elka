@@ -30,7 +30,7 @@
                     <input id="search" type="text" class="form-control me-2" type="search"
                         placeholder="Cari Nama/kategori obat.." aria-label="Search">
                     <!-- <button class="btn btn-outline-success" type="submit"><i
-                                                                                                                                                                                                                                                                                            class="fa-solid fa-magnifying-glass"></i></button> -->
+                                                                                                                                                                                                                                                                                                class="fa-solid fa-magnifying-glass"></i></button> -->
                 </form>
             </div>
             <div class="d-flex align-items-center col-8 col-sm-5 col-lg-3 ms-auto">
@@ -64,7 +64,7 @@
                     </thead>
                     <!-- <div>
 
-                                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                                    </div> -->
                     <tbody id="tbodyy">
 
                         @foreach ($barang as $b)
@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div id="paginasi" class="pagination justify-content-center mb-5">
+    <div id="paginasi" class="pagination justify-content-center my-5">
         {{ $barang->links() }}
     </div>
 

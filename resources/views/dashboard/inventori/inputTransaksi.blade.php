@@ -30,8 +30,8 @@
                 <div class="px-4 mb-3">
                     <h6>Produk</h6>
                     <select id="produkList" class="form-select form-select-sm border-secondary"
-                        aria-label="Default select example" aria-placeholder="Pilih produk..">
-                        <option selected disabled>-- Pilih Obat --</option>
+                        aria-label="Default select example" aria-placeholder="Pilih produk.." required>
+                        <option>-- Pilih Obat --</option>
                         @foreach ($barang as $b)
                             <option value="{{ $b->nama }}" name="{{ $b->nama }}"
                                 @if ($b->sisa <= 0) disabled @endif>{{ $b->nama }} -
@@ -322,6 +322,11 @@
             $deskripsi = $('textarea#deskripsi').val();
             var printWindow = window.open('', '', 'height=400,width=800');
 
+            // Tanggal sekarang
+            var today = new Date();
+            today = String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0') +
+                '-' + today.getFullYear();
+
             printWindow.document.write(`
                  <html>
                         <head>
@@ -340,7 +345,7 @@
                             Padang Cermin, Kec. Padang Cermin, Kabupaten Pesawaran
                         </div>
                         <div>
-                            Tgl: 07-02-2022 16.00
+                            Tgl: ` + today + `
                         <div>
                         <hr>`)
 
@@ -373,6 +378,21 @@
                         </p>
                     </body>
                 </html>
+                <style>
+                    body{
+                        padding-top: 30px;
+                    }
+                    @page {
+                        size: A5;
+                        margin: 0;
+                    }
+                    // @media print {
+                    //     html, body {
+                    //         width: 30mm;
+                    //         height: 58mm;
+                    //     }
+                    // }
+                </style>
             `)
 
             // printWindow.document.write('<html><head><title>Apotek Elka Farma</title>');

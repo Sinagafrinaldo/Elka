@@ -10,7 +10,7 @@
                     <div class="card" style="width: 18rem;">
                         <div onClick="location.href='/list-kategori/{{ $k->slug }}'" style="cursor:pointer;"
                             class="card-body bg-dark d-flex justify-content-center">
-                            <div class="card rounded-circle d-flex align-items-center py-5 px-5">
+                            <div class="card rounded-circle d-flex align-items-center py-3 py-sm-5 px-4">
                                 <img src="/kategori/{{ $k->gambar }}" width="60" height="60">
                                 <h5 class="card-title" style="text-align: center;">{{ $k->nama }}</h5>
                             </div>
@@ -20,4 +20,15 @@
             @endforeach
         </div>
     </div>
+    <style>
+        h5 {
+            width: 150px;
+        }
+
+        @media(max-width: 400px) {
+            h5 {
+                font-size: 1rem;
+            }
+        }
+    </style>
 @endsection

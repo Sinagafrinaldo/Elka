@@ -18,7 +18,7 @@
 <body>
     {{-- NAVBAR --}}
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
-        <div class="container">
+        <div class="container py-2 py-sm-3">
             <a class="navbar-brand" href="#">Apotek Elka Farma </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,25 +26,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item text-center">
+                    <li class="nav-item">
                         <a class="nav-link {{ $title === 'Home' ? 'active' : '' }}" aria-current="page"
                             href="/">Home</a>
                     </li>
-                    <li class="nav-item text-center">
+                    <li class="nav-item">
                         <a class="nav-link {{ $title === 'Cek Stok Obat' || $title === 'Detail' ? 'active' : '' }}"
                             href="/cek-stok">Daftar
                             Obat</a>
                     </li>
-                    <li class="nav-item text-center">
+                    <li class="nav-item">
                         <a class="nav-link {{ $title === 'Kategori' || str_contains($title, 'Detail Kategori') ? 'active' : '' }}"
                             href="/kategori-barang">Kategori
                         </a>
                     </li>
-                    <li class="nav-item text-center">
+                    <li class="nav-item">
                         <a class="nav-link {{ $title === 'Tentang Kami' ? 'active' : '' }}" href="/tentang-kami">Tentang
                             Kami</a>
                     </li>
-                    <li class="nav-item text-center">
+                    <li class="nav-item">
                         <a href="/admin" class="btn btn-primary ms-lg-3">LOGIN</a>
                     </li>
                 </ul>
