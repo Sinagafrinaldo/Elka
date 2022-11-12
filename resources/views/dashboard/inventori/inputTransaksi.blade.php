@@ -325,7 +325,8 @@
             // Tanggal sekarang
             var today = new Date();
             today = String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0') +
-                '-' + today.getFullYear();
+                '-' + today.getFullYear() + '  ' + today.getHours() + ":" + today.getMinutes() + ":" + today
+                .getSeconds();
 
             printWindow.document.write(`
                  <html>

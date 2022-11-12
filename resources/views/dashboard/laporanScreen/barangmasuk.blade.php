@@ -61,9 +61,14 @@
             var title = "Laporan Barang Masuk"
 
             // Tanggal sekarang
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
+                "Oktober", "November", "Desember"
+            ];
+
             var today = new Date();
-            today = String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0') +
-                '-' + today.getFullYear();
+            today = String(today.getDate()).padStart(2, '0') + ' ' +
+                String(months[today.getMonth()]).padStart(2, '0') + ' ' +
+                today.getFullYear();
 
             var divContents = $("#rincian").html();
             var htmlToPrint = '' +
