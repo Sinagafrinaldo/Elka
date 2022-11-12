@@ -35,7 +35,7 @@
     </div>
 
     {{-- TENTANG KAMI --}}
-    <section class="p-4 pt-5">
+    <section class="p-2 p-sm-4 pt-5">
         <div class="container p-md-10">
             <div class="row mb-5 ">
                 <div class="col-lg-5 col-md-12 col-12 d-flex">
@@ -104,7 +104,7 @@
 
 
     {{-- LOKASI --}}
-    <section class="p-4 mt-5 mb-5" id="lokasi">
+    <section class="p-2 p-sm-4 mt-5 mb-5" id="lokasi">
         <div class="container p-10">
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-5">
@@ -178,9 +178,17 @@
             background-color: white;
             border-radius: 10px;
             width: 35vw;
-            padding-block: 1vw;
+            padding-block: 5px;
             margin: 0.5rem;
             text-align: center;
+        }
+
+        @media(max-width: 636px) {
+            .cek-layanan a {
+                font-size: 0.7rem;
+                margin: 0.3rem;
+                width: 42vw;
+            }
         }
     </style>
 @endsection

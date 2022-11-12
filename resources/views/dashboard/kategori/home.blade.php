@@ -22,40 +22,54 @@
         {{-- Table --}}
         <?php
         $a = 1; ?>
-        <div class="row mt-3 mx-1 p-2 bg-white">
-
-            <table class="table table-hover table-responsive text-center" style="color: #656a6e">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Kategori</th>
-                        <th scope="col">Aksi</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($kategori as $k)
+        <div class="mt-3 mx-1 p-2 bg-white over">
+            <div class="row px-4 w-table ">>
+                <table class="table table-hover text-center" style="color: #656a6e">
+                    <thead>
                         <tr>
-                            <th scope="row">{{ $a }}</th>
-                            <td>{{ $k->nama }} </td>
-                            <td>
-                                <a href="/admin/edit-kategori/{{ $k->slug }} " class="btn btn-primary btn-sm">
-                                    <i class="fa-solid fa-pen text-light"></i>
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="/admin/kategori/hapus-kategori/{{ $k->id }}"
-                                    onclick="return confirm('Apakah anda yakin ingin menghapus?')">
-                                    <i class="fa-solid fa-trash-can text-light"></i>
-                                </a>
-                            </td>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama Kategori</th>
+                            <th scope="col">Aksi</th>
+
                         </tr>
-                        <?php $a++; ?>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($kategori as $k)
+                            <tr>
+                                <th scope="row">{{ $a }}</th>
+                                <td>{{ $k->nama }} </td>
+                                <td>
+                                    <a href="/admin/edit-kategori/{{ $k->slug }} " class="btn btn-primary btn-sm">
+                                        <i class="fa-solid fa-pen text-light"></i>
+                                    </a>
+                                    <a class="btn btn-danger btn-sm"
+                                        href="/admin/kategori/hapus-kategori/{{ $k->id }}"
+                                        onclick="return confirm('Apakah anda yakin ingin menghapus?')">
+                                        <i class="fa-solid fa-trash-can text-light"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php $a++; ?>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
-    <div class="pagination justify-content-center">
+    <div class="pagination justify-content-center py-5">
         {{ $kategori->links() }}
     </div>
+
+    <style>
+        @media(max-width: 1160px) {
+            .over {
+                overflow-x: auto;
+            }
+
+            .w-table {
+                width: 500px;
+            }
+        }
+    </style>
 @endsection

@@ -72,7 +72,7 @@
 
                 <div id="rincian" class="mx-2 p-2 bg-white over">
                     <div class="row px-4 w-table ">
-                        <table class="table table-sm table-responsive" style="color: #656a6e">
+                        <table class="table table-sm table-responsive text-center" style="color: #656a6e">
                             <thead>
                                 <tr>
                                     <th scope="col">Produk</th>
@@ -352,7 +352,7 @@
             big2_data.forEach(e => {
                 printWindow.document.write(`
                         <p>
-                            <div>` + e + `</div>
+                            <div style="margin-bottom: 3px" >` + e + `</div>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Harga Satuan</div>
                                 <div>Jumlah</div>
@@ -360,10 +360,10 @@
                             </div>
                         </p>
             `)
-                printWindow.document.write(`            
+            });
+            printWindow.document.write(`            
                         <hr>
             `)
-            });
 
             printWindow.document.write(`            
                         <p>
