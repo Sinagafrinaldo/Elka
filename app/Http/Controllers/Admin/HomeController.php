@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Support\Str; 
 
  
 class HomeController extends Controller
@@ -16,7 +16,8 @@ class HomeController extends Controller
     }
 
     public function index (){
-        $jumlah = DB::table('barang')->sum('sisa');
+        $jumlah = DB::table('barang')->count();
+        $jumlah_pcs = DB::table('barang')->sum('sisa');
         $kategori = DB::table('kategori')->count();
         $pendapatan = DB::table('laporan_pemasukan')
         ->where('periode', date('F Y'))
@@ -45,7 +46,7 @@ class HomeController extends Controller
         ->count();
 
         $kadaluarsa = DB::table('barang')
-        ->where('kadaluarsa' ,'>=', $time  )
+        ->where('kadaluarsa' ,'<=', $time  )
         ->count();
       
 
@@ -74,7 +75,8 @@ class HomeController extends Controller
             "list" => $pendapatan_list,
             "minim"=>$minim,
             "kadaluarsa" =>$kadaluarsa,
-            "pembeli" =>$pembeli
+            "pembeli" =>$pembeli,
+            "pcs" =>$jumlah_pcs
 
         ]); 
     }
@@ -134,6 +136,19 @@ class HomeController extends Controller
             "barang" => $barang
         ]); 
     }
+    public function laporan_barangminim (){
+        $minim = DB::table('barang')
+        ->where('sisa' ,'<=', DB::raw('minimal'))
+        ->orderby('sisa','desc')->paginate(8)->onEachSide(0);
+       
+		
+    //    print_r(gettype($barang));
+  
+        return view('dashboard.laporanScreen.barangMinim', [
+            "title" => "Laporan Barang Sisa",
+            "barang"=>$minim
+        ]); 
+    }
     public function laporan_penjualan (){
         $laporan = DB::table('struk')
 		->orderby('tanggal' , 'desc')
@@ -155,8 +170,20 @@ class HomeController extends Controller
     }
 
 	public function kadaluarsa (){
+        date_default_timezone_set('Asia/Jakarta');   
+        $time = date("Y-m-d H:i:s", time()); 
+
+       
+        $kadaluarsa = DB::table('barang')
+        ->where('kadaluarsa' ,'<=', $time  )
+        ->orderby('kadaluarsa', 'asc')
+        ->paginate(8)->onEachSide(0);
+
+        $kategori = DB::table('kategori')->get();
         return view('dashboard.kadaluarsa',[
-            "title" => "Kadaluarsa"
+            "title" => "Kadaluarsa",
+            "kadaluarsa" =>$kadaluarsa,
+            "kategori" =>$kategori
         ]); 
     }
 

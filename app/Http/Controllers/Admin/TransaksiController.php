@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 // use DateTime;
  
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
  
@@ -239,5 +239,80 @@ class TransaksiController extends Controller
     
                 $output  = '  <div id="outputPendapatan" class="fs-5 mt-2">Rp. '.number_format($pendapatan).',-</div>';
                  return Response($output);
+                }
+
+
+                public function searchKadaluarsa(Request $request)
+                {
+                    date_default_timezone_set('Asia/Jakarta');   
+                    $time = date("Y-m-d H:i:s", time()); 
+
+                    if($request->ajax()){
+                            $a = 1;
+                            $output="";
+                            $products=DB::table('barang')
+                            ->where('kadaluarsa' ,'<=', $time  )
+                            ->where('nama','LIKE','%'.$request->search."%")
+                            // ->orwhere('kategori','LIKE','%'.$request->search."%")
+                            ->paginate(10)->onEachSide(0);
+                        
+                            // if ($products->isEmpty()){
+                            //     $products=DB::table('barang') ->get();
+                            // }
+                            if($products){
+                                foreach ($products as $key => $product) {
+                        
+                                $output.='<tr>'.
+                                '<td>'.$a.'</td>'.
+                                '<td>'.$product->id.'</td>'.
+                                '<td>'.$product->nama.'</td>'.
+                                '<td>'.$product->kategori.'</td>'.
+                                '<td>'.$product->kadaluarsa.'</td>'.
+                                '<td>'.$product->sisa.'</td>'.
+                               
+                                '</tr>';
+                                $a++;
+                        }
+                        return Response($output);
+                        }
+                    }
+                }
+
+                public function filterKadaluarsa(Request $request)
+                {
+                    date_default_timezone_set('Asia/Jakarta');   
+                    $time = date("Y-m-d H:i:s", time()); 
+
+                    if($request->ajax()){
+                            $a = 1;
+                            $output="";
+                            $products=DB::table('barang')
+                            ->where('kadaluarsa' ,'<=', $time  )
+                            ->where('kategori','LIKE','%'.$request->search."%")
+                            // ->orwhere('kategori','LIKE','%'.$request->search."%")
+                            ->paginate(10)->onEachSide(0);
+                        
+                            if ($products->isEmpty()){
+                                $products=DB::table('barang')
+                                ->where('kadaluarsa' ,'<=', $time  )
+                                ->paginate(10)->onEachSide(0);
+                            }
+                            if($products){
+                                foreach ($products as $key => $product) {
+                        
+                                $output.='<tr>'.
+                                '<td>'.$a.'</td>'.
+                                '<td>'.$product->id.'</td>'.
+                                '<td>'.$product->nama.'</td>'.
+                                '<td>'.$product->kategori.'</td>'.
+                                '<td>'.$product->kadaluarsa.'</td>'.
+                                '<td>'.$product->sisa.'</td>'.
+                               
+                                '</tr>';
+                                $a++;
+                        }
+                        return Response($output);
+                        }
+                    }
                 }
 }

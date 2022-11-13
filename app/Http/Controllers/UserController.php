@@ -21,7 +21,7 @@ class UserController extends Controller
 
         return view('user.cekStok', [
             "title" => "Cek Stok Obat",
-            "barang" => $barang
+            "barang" => $barang 
         ]);
     }
 
@@ -41,9 +41,21 @@ class UserController extends Controller
 
     public function detail (Request $request) {
         $barang = DB::table('barang')->where('slug',$request->slug)->get();
+        foreach ($barang as $key =>$product){
+            $rekomendasi =  DB::table('barang')
+            ->where('kategori',$product->kategori)
+            ->where('slug', '!=', $request->slug)
+            ->get();
+        }
+        // foreach ($rekomendasi as $key => $rekom){
+        //     if ($rekom->slug == $request->slug){
+
+        //     }
+        // }
         return view('user.detail', [
             "title" => "Detail",
-            "barang"=>$barang
+            "barang"=>$barang,
+            "rekomendasi" =>$rekomendasi
         ]);
     }
     public function listKategori (Request $request) {
