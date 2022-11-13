@@ -26,32 +26,31 @@
 
             <div class="carousel-item active">
                 <div class="row align-items-stretch">
-                    @for ($i = 0; $i < 3; $i++)
-                        <div class="col-md-4 col-6 my-2 d-flex ">
-                            <div class="card shadow p-sm-3 w-100 h-100">
-                                <img src="/uploads/{{ $b->image }}" class="img-fluid align-self-center"
-                                    alt="...">
-                                <div class="card-body text-center d-flex flex-column justify-content-end">
-                                    <h5 class="card-title fw-bolder py-1 textstyle">{{ $b->nama }}</h5>
-                                    <h6 class="text-secondary textstyle2">Harga : Rp. {{ $b->harga }}</h6>
-                                    <div class="row align-items-center border-top border-bottom">
-                                        <div class="col p-2">
-                                            <span style="font-size: 10pt">{{ $b->kategori }}</span>
-                                        </div>
+                    @foreach ($rekomendasi as $r)
+                    <div class="col-md-4 col-6 my-2 d-flex ">
+                        <div class="card shadow p-sm-3 w-100 h-100">
+                            <img src="/uploads/{{ $r->image }}" class="img-fluid align-self-center" alt="...">
+                            <div class="card-body text-center d-flex flex-column justify-content-end">
+                                <h5 class="card-title fw-bolder py-1 textstyle">{{ $r->nama }}</h5>
+                                <h6 class="text-secondary textstyle2">Harga : Rp. {{ $r->harga }}</h6>
+                                <div class="row align-items-center border-top border-bottom">
+                                    <div class="col p-2">
+                                        <span style="font-size: 10pt">{{ $r->kategori }}</span>
                                     </div>
-                                    <div class="row px-sm-3 pt-2">
-                                        <a href="/detail/{{ $b->slug }}" class="col btn btn-sm btn-dark m-1">
-                                            Detail
-                                        </a>
-                                        <div
-                                            class="col border border-dark rounded-1 d-flex justify-content-center fw-bolder align-items-center m-1">
-                                            {{ $b->sisa }}
-                                        </div>
+                                </div>
+                                <div class="row px-sm-3 pt-2">
+                                    <a href="/detail/{{ $r->slug }}" class="col btn btn-sm btn-dark m-1">
+                                        Detail
+                                    </a>
+                                    <div
+                                        class="col border border-dark rounded-1 d-flex justify-content-center fw-bolder align-items-center m-1">
+                                        {{ $r->sisa }}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
