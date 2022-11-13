@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+| 
 */
 
 Route::get('/', [UserController::class, 'index']);
@@ -57,12 +57,15 @@ Route::prefix('admin')->group(function(){
     Route::get('/edit-kategori/{slug}',[App\Http\Controllers\Admin\HomeController::class,'editKategori']);
 
     Route::get('/daftar-obat/cari',[App\Http\Controllers\Admin\HomeController::class,'search']);
+    Route::get('/kadaluarsa/cari',[App\Http\Controllers\Admin\TransaksiController::class,'searchKadaluarsa']);
+    Route::get('/kadaluarsa/filter',[App\Http\Controllers\Admin\TransaksiController::class,'filterKadaluarsa']);
     Route::get('/input-transaksi/harga',[App\Http\Controllers\Admin\TransaksiController::class,'index']);
     Route::get('/input-transaksi/keranjang',[App\Http\Controllers\Admin\TransaksiController::class,'keranjang']);
     Route::post('/tambah',[App\Http\Controllers\Admin\TransaksiController::class,'tambah2']);
     Route::get('/laporan-penjualan/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sort']);
     Route::get('/laporan-pemasukan/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sortPemasukan']);
     Route::get('/laporan-barang-sisa/minim',[App\Http\Controllers\Admin\TransaksiController::class,'minim']);
+    Route::get('/laporan-barang-sisa/stok-minim',[App\Http\Controllers\Admin\HomeController::class,'laporan_barangminim']);
     Route::get('/laporan-barang-masuk/sort',[App\Http\Controllers\Admin\TransaksiController::class,'sortBarangmasuk']);
     Route::get('/periode-select',[App\Http\Controllers\Admin\TransaksiController::class,'periodeSelect']);
     Route::get('/periode-pendapatan',[App\Http\Controllers\Admin\TransaksiController::class,'periodePendapatan']);
