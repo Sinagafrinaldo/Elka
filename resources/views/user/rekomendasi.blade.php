@@ -4,7 +4,7 @@
     <div class="over">
         <div class="d-flex w-over">
             @foreach ($rekomendasi as $b)
-                <div class="col-md-4 col-6 my-2 d-flex  me-3 ">
+                <div class="col-md-5 col-lg-4 col-8 my-2 d-flex  me-3 ">
                     <div class="card shadow p-sm-3 w-100 h-100">
                         <img src="/uploads/{{ $b->image }}" class="img-fluid align-self-center m-auto" alt="...">
                         <div class="card-body text-center d-flex flex-column justify-content-end">
@@ -15,7 +15,7 @@
                                     <span style="font-size: 10pt">{{ $b->kategori }}</span>
                                 </div>
                             </div>
-                            <div class="row px-sm-3 pt-2">
+                            <div class="row d-flex flex-row px-sm-3 pt-2">
                                 <a href="/detail/{{ $b->slug }}" class="col btn btn-sm btn-dark m-1">
                                     Detail
                                 </a>
@@ -41,6 +41,22 @@
 
     .over::-webkit-scrollbar {
         display: none;
+    }
+
+    @media (max-width: 400px) {
+        .over img {
+            width: 100px;
+            margin-top: 5px;
+        }
+
+        .textstyle {
+            font-size: 1rem;
+        }
+
+        .textstyle2 {
+            font-size: 0.8rem;
+        }
+
     }
 
     @media (max-width: 450px) {

@@ -3,19 +3,19 @@
 @section('content')
     <div class="container py-5">
         <div class="container d-flex mb-3">
-            <form action="/cari" method="GET" class="d-flex ms-auto w-50" role="search">
+            <form action="/cari" method="GET" class="d-flex ms-auto" role="search">
                 <input name="cari" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="btn btn-dark" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </form>
         </div>
 
         <div class="container">
-            <h4 class="d-flex justify-content-center fw-bold">{{ $namaKategori }}</h4>
-            <hr>
             <div class="row align-items-stretch">
                 @foreach ($barang as $b)
                     <div class="col-md-4 col-6 my-2 d-flex ">
-                        <div class="card p-sm-3 w-100 h-100">
+                        <div class="card shadow p-sm-3 w-100 h-100">
                             <img src="/uploads/{{ $b->image }}" class="img-fluid align-self-center" alt="...">
                             <div class="card-body text-center d-flex flex-column justify-content-end">
                                 <h5 class="card-title fw-bolder py-1 textstyle">{{ $b->nama }}</h5>
@@ -66,6 +66,10 @@
             img {
                 width: 200px;
                 margin-top: 5px;
+            }
+
+            .col-md-4 {
+                padding-inline: 10px;
             }
         }
 

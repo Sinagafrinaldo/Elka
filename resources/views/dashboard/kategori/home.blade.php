@@ -1,4 +1,8 @@
 <title>Kategori || Elka Farma</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @extends('layouts._dashboard.app')
 
 @section('content')
@@ -23,7 +27,7 @@
         <?php
         $a = 1; ?>
         <div class="mt-3 mx-1 p-2 bg-white over">
-            <div class="row px-4 w-table ">>
+            <div class="row px-4 w-table ">
                 <table class="table table-hover text-center" style="color: #656a6e">
                     <thead>
                         <tr>
@@ -42,9 +46,13 @@
                                     <a href="/admin/edit-kategori/{{ $k->slug }} " class="btn btn-primary btn-sm">
                                         <i class="fa-solid fa-pen text-light"></i>
                                     </a>
-                                    <a class="btn btn-danger btn-sm"
+                                    {{-- <a class="btn btn-danger btn-sm"
                                         href="/admin/kategori/hapus-kategori/{{ $k->id }}"
                                         onclick="return confirm('Apakah anda yakin ingin menghapus?')">
+                                        <i class="fa-solid fa-trash-can text-light"></i>
+                                    </a> --}}
+                                    <a class="btn btn-danger btn-sm delete" href="#" data-id="{{ $k->id }}"
+                                        data-nama="{{ $k->nama }}">
                                         <i class="fa-solid fa-trash-can text-light"></i>
                                     </a>
                                 </td>
@@ -72,4 +80,26 @@
             }
         }
     </style>
+    <script type="text/javascript">
+        $('.delete').on('click', function() {
+            var $id = $(this).attr('data-id');
+            var $nama = $(this).attr('data-nama');
+
+            swal({
+                    title: "Delete Data ?",
+                    text: "Anda akan menghapus kategori " + $nama + " dari database",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "/admin/kategori/hapus-kategori/" + $id;
+                        swal("Data berhasil dihapus", {
+                            icon: "success",
+                        });
+                    }
+                });
+        });
+    </script>
 @endsection

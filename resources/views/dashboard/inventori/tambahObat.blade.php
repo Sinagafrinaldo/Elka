@@ -113,6 +113,10 @@
             .w-over {
                 width: 500px;
             }
+
+            .over::-webkit-scrollbar {
+                display: none;
+            }
         }
     </style>
 

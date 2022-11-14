@@ -38,9 +38,9 @@
     </div>
 
     {{-- TENTANG KAMI --}}
-    <section class="p-2 p-sm-4 pt-5">
+    <section class="p-2 p-sm-4 my-5">
         <div class="container p-md-10">
-            <div class="row mb-5 ">
+            <div class="row">
                 <div class="col-lg-5 col-md-12 col-12 d-flex">
                     <div class="about-img align-self-center mb-4 ">
                         <img src="./assets/p.jpg" alt="" class="img-fluid">
@@ -58,7 +58,7 @@
                             Hal ini disesuaikan dengan kepemilikan awal apotek yang seorang perempuan serta fokus bisini
                             yang kearah...
                         </p>
-                        <div class="d-flex justify-content-center justify-content-sm-start">
+                        <div class="d-flex justify-content-end justify-content-sm-start">
                             <a href="/tentang-kami" class="btn btn-primary">Selengkapnya</a>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
 
     {{-- LOKASI --}}
     <div class="container mb-5 mt-5">
-        <div class="row p-3 bg-white shadow">
+        <div class="row p-3 bg-white">
             <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-5">
                 <div class="about-text">
                     <h2>Lokasi Apotek</h2>

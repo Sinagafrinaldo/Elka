@@ -78,7 +78,7 @@
                             <label class="input-group-text bg-primary text-light px-4" for="inputGroupFile">Choose
                                 File</label>
                             <input name="image" type="file" class="form-control border-0 bg-transparent"
-                                id="inputGroupFile" onchange="loadFile(event)" required>
+                                id="inputGroupFile" onchange="loadFile(event)">
                         </div>
                         <img id="output" src="/uploads/{{ $b->image }}" class="py-3" style="width: 200">
                     </div>
@@ -115,6 +115,10 @@
 
             .w-over {
                 width: 500px;
+            }
+
+            .over::-webkit-scrollbar {
+                display: none;
             }
         }
     </style>
