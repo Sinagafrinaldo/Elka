@@ -1,3 +1,6 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
 @extends('user.navbar')
 
 @section('content')
@@ -47,13 +50,13 @@
                     <div class="about-text">
                         <h2 class="d-flex justify-content-center justify-content-sm-start">Tentang Kami</h2>
                         <hr class="mt-1" style="border-width: 2px">
-                        <p style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe vel
-                            architecto qui necessitatibus
-                            delectus doloremque amet iure blanditiis cum fuga, nostrum nesciunt accusantium maxime ratione
-                            in vero repellat error dolor.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe vel architecto qui necessitatibus
-                            delectus doloremque amet iure blanditiis cum fuga, nostrum nesciunt accusantium maxime ratione
-                            in vero repellat error dolor.
+                        <p style="text-align: justify">
+                            Apotek Elka Farma adalah sebuah apotek yang didirikan pada tahun 2005 dengan pemilik apotek
+                            bernama ginting.
+                            Nama Elka Farma sendiri diambil dari kata elka yang berarti perempuan dan farma yang berarti
+                            berkaitan dengan obat atau tentang obat.
+                            Hal ini disesuaikan dengan kepemilikan awal apotek yang seorang perempuan serta fokus bisini
+                            yang kearah...
                         </p>
                         <div class="d-flex justify-content-center justify-content-sm-start">
                             <a href="/tentang-kami" class="btn btn-primary">Selengkapnya</a>
@@ -87,49 +90,78 @@
             <h2 class="text-center">LAYANAN</h2>
             <hr class="mt-4 mb-3" style="border-width: 2px">
             <div class="cek-layanan">
-                <div class="row">
-                    <a href="/layanan/cek-kolesterol">Cek Kolesterol</a>
-                    <a href="/layanan/cek-asam-urat">Cek Asam Urat</a>
+                <div class="row justify-content-center">
+                    @foreach ($layanan as $l)
+                        <a href="" name="test" type="button" class="" data-bs-toggle="modal"
+                            data-bs-target="#{{ str_replace(' ', '-', $l->title) }}">
+                            {{ $l->title }}
+                        </a>
+                    @endforeach
                 </div>
-                <div class="row">
-                    <a href="/layanan/cek-gula-darah">Cek Gula Darah</a>
-                    <a href="/layanan/cek-tensi-darah">Cek Tensi Darah</a>
-                </div>
-
             </div>
-
         </div>
     </div>
 
+    @foreach ($layanan as $l)
+        <!-- The Modal -->
+        <div class="modal fade" id="{{ str_replace(' ', '-', $l->title) }}">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
 
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ $l->title }}</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
 
-    {{-- LOKASI --}}
-    <section class="p-2 p-sm-4 mt-5 mb-5" id="lokasi">
-        <div class="container p-10">
-            <div class="row">
-                <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-5">
-                    <div class="about-text">
-                        <h2>Lokasi Apotek</h2>
-                        <hr class="mt-1" style="border-width: 2px">
-                        <p style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe vel
-                            architecto qui necessitatibus
-                            delectus doloremque amet iure blanditiis cum fuga, nostrum nesciunt accusantium maxime ratione
-                            in vero repellat error dolor.
+                    <!-- Modal body -->
+                    <div class="modal-body px-4">
+                        <div class="d-flex justify-content-center">
+                            <img src="/layanan/{{ $l->image }}" alt="" class="img-fluid">
+                        </div>
+                        <p class="mt-4" style="text-align: justify">
+                            {!! $l->desc !!}
                         </p>
-                        <a href="https://goo.gl/maps/fZZG1B3YBPmK9kyB9" class="btn btn-primary">Lihat Maps</a>
                     </div>
-                </div>
-                <div class="col-lg-5 col-md-12 col-12">
-                    <div id="map-container-google-1">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.7674545292016!2d105.13688861408548!3d-5.601332957127351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e41299383ebc231%3A0x1d874096b4360f52!2sApotik%20Elka%20Farma!5e0!3m2!1sid!2sid!4v1664393129418!5m2!1sid!2sid"
-                            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
                     </div>
+
                 </div>
             </div>
         </div>
-    </section>
+    @endforeach
+
+    {{-- LOKASI --}}
+    <div class="container mb-5 mt-5">
+        <div class="row p-3 bg-white shadow">
+            <div class="col-lg-7 col-md-12 col-12 ps-lg-5 mt-md-5 mb-5">
+                <div class="about-text">
+                    <h2>Lokasi Apotek</h2>
+                    <hr class="mt-1" style="border-width: 2px">
+                    <p style="text-align: justify">
+                        Apotek Elka Farma beralamatkan di Jalan Way Ratai, Padang Cermin, Kec. Padang Cermin,
+                        Kabupaten Pesawaran, Lampung kode pos 35451.
+                    </p>
+                    <p>
+                        Buka : Senin - Jumat <br>
+                        Pukul : 08.00 - 17.00
+                    </p>
+                    <a href="https://goo.gl/maps/fZZG1B3YBPmK9kyB9" class="btn btn-primary">Lihat Maps</a>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 col-12">
+                <div id="map-container-google-1">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.7674545292016!2d105.13688861408548!3d-5.601332957127351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e41299383ebc231%3A0x1d874096b4360f52!2sApotik%20Elka%20Farma!5e0!3m2!1sid!2sid!4v1664393129418!5m2!1sid!2sid"
+                        width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('style')
@@ -162,8 +194,7 @@
 
         .cek-layanan {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             width: 100%;
         }
 

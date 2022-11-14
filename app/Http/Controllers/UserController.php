@@ -9,8 +9,10 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
     public function index (){
+        $layanan = DB::table('layanan')->get();
         return view('user.homeUser' , [
-            "title" => "Home"
+            "title" => "Home",
+            "layanan" => $layanan,
         ]); 
     }
 
@@ -92,12 +94,12 @@ class UserController extends Controller
 	}
 
 
-    public function layanan(Request $request){
+    // public function layanan(Request $request){
 
-        $title = ucwords(str_replace( "-", " ", $request->slug));
+    //     $title = ucwords(str_replace( "-", " ", $request->slug));
 
-        return view('user.layanan.detailLayanan', [
-            "title" => $title,
-        ]);
-	}
+    //     return view('user.layanan.detailLayanan', [
+    //         "title" => $title,
+    //     ]);
+	// }
 }
