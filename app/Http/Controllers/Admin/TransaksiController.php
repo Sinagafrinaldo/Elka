@@ -46,7 +46,9 @@ class TransaksiController extends Controller
     }
 
     public function keranjang (Request $request){
-
+        $data = $request->namaP;
+        // $arr = explode(" ", $data);
+        
         if($request->ajax()){
             $output="";
             $products=DB::table('barang')
@@ -60,7 +62,7 @@ class TransaksiController extends Controller
                     <td>'.$request->harga.'</td>
                     <td id="total'.strtok($request->namaP, " ").$request->harga.'">'.$product->harga * $request->harga.'</td>
                     <td id="aksi" >
-                        <button class="btn btn-danger btn-sm" onclick=delete_row("'.strtok($request->namaP, " ").$request->harga.'")>
+                        <button class="btn btn-danger btn-sm" onclick= aktif("'.rawurlencode($data).'");delete_row("'.strtok($request->namaP, " ").$request->harga.'");>
                             <i class="fa-solid fa-trash-can text-light"></i>
                         </button>
                     </td>
