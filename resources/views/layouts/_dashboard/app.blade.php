@@ -50,8 +50,7 @@
                 </a>
             </div>
             <div class="sidebar-heading bg-transparent d-flex align-items-center px-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" class="rounded-3"
-                    style="width: 50px;" alt="Avatar" />
+                <img src="/assets/fotoprofil.jpg" class="rounded-3" style="width: 50px;" alt="Avatar" />
                 <div class=" d-block ps-2 text-white">
                     <h6>
                         {{ Auth::guard('adminMiddle')->user()->name }}
