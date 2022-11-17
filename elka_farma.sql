@@ -44,7 +44,7 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin 1', 'joyravelo@gmail.com', '2022-04-22 01:20:28', '$2y$10$RVcEnWA.d/P3oKmPq0Rq8uTNpP.ycMW1gC3NW2LkE7s1cb7H1CtFW', '93Rl4bRAQEU6O3FxfiQwHgB8Uu4w8AFiqzNLQ1MmSPG3gifIeNzfRjjrX8ap', '2022-04-22 01:20:29', '2022-04-22 01:20:29'),
-(2, 'Super Admin 2', 'elka123@gmail.com', '2022-04-22 01:20:29', '$2y$10$18irQRfbA8DcDqDE2UjtSOkaReQgLadOJ4Wsq0qLs2bHv2gvqZMsm', '', '2022-10-09 20:08:30', '2022-10-09 20:08:30');
+(2, 'Benni Ginting', 'elka123@gmail.com', '2022-04-22 01:20:29', '$2y$10$18irQRfbA8DcDqDE2UjtSOkaReQgLadOJ4Wsq0qLs2bHv2gvqZMsm', '', '2022-10-09 20:08:30', '2022-10-09 20:08:30');
 
 -- --------------------------------------------------------
 
