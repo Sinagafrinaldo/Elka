@@ -128,10 +128,10 @@
                     Kategori
                 </a>
             </div>
-            <div class="text-white mt-auto mb-3 mx-3 p-2 d-flex justify-content-center"
-                style="background-color: #455162; margin-top: 150px;">
+            <a href="/" target="_blank" class="text-white mt-auto mb-3 mx-3 p-2 d-flex justify-content-center"
+                style="background-color: #455162; margin-top: 150px; text-decoration: none;">
                 Website
-            </div>
+            </a>
         </div>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">

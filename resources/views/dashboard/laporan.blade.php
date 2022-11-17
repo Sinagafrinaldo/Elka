@@ -1,5 +1,14 @@
 <link rel="shortcut icon" href="/assets/images/icon.svg" type="image/x-icon">
 <title>{{ $title }} || Elka Farma</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#tanggal1").datepicker({ "dateFormat": "dd/mm/yy" });
+        $("#tanggal2").datepicker({ "dateFormat": "dd/mm/yy" });
+    });
+</script>
 @extends('layouts._dashboard.app')
 
 @section('content')
@@ -32,9 +41,9 @@
         </div>
         @else
         <div class="col-12 col-lg-10 d-flex justify-content-end">
-            <input id="tanggal1" name="date1" type="date" class="form-control w-auto">
+            <input id="tanggal1" placeholder="dd/mm/yy" name="date1" type="text" class="form-control w-auto">
             <div class="fs-4 px-2 w-auto"> - </div>
-            <input id="tanggal2" name="date2" type="date" class="form-control w-auto">
+            <input id="tanggal2" placeholder="dd/mm/yy" name="date2" type="text" class="form-control w-auto">
         </div>
         <div class="col-12 col-md d-flex justify-content-end justify-content-lg-start m-2 m-lg-0">
             <button id="tampil" class="btn btn-dark ms-2">Tampilkan</button>
@@ -51,9 +60,9 @@
     </div>
     @else
     <div class="d-flex col-7 ms-auto">
-        <input id="tanggal1" name="date1" type="date" class="form-control">
+        <input id="tanggal1" name="date1" type="text" class="form-control">
         <div class="fs-4 px-2"> - </div>
-        <input id="tanggal2" name="date2" type="date" class="form-control">
+        <input id="tanggal2" name="date2" type="text" class="form-control">
         <button id="tampil" class="btn btn-dark ms-2">Tampilkan</button>
     </div>
     @endif

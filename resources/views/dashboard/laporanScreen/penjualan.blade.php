@@ -140,14 +140,18 @@
         var tanggal1 = $('#tanggal1').val();
         // $tanggal2 = new Date(tanggal2);
         // $tanggal1 = new Date(tanggal1);
-        console.log(typeof (tanggal2))
-        console.log(tanggal1)
+        var parts = tanggal1.split('/');
+        var mydate1 = (parts[2]) + '-' + (parts[1]) + '-' + parts[0];
+        var parts2 = tanggal2.split('/');
+        var mydate2 = (parts2[2]) + '-' + (parts2[1]) + '-' + parts2[0];
+        // console.log(typeof (tanggal2))
+        console.log(mydate1)
         $.ajax({
             type: 'get',
-            url: '{{ URL::to(' / admin / laporan - penjualan / sort') }}',
+            url: '{{ URL::to("/admin/laporan-penjualan/sort") }}',
             data: {
-                'tanggal1': tanggal1,
-                'tanggal2': tanggal2,
+                'tanggal1': mydate1,
+                'tanggal2': mydate2,
             },
             success: function (data) {
                 $('#output').html(data);

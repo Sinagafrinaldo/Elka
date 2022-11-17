@@ -145,7 +145,7 @@
         console.log(tanggal1)
         $.ajax({
             type: 'get',
-            url: '{{ URL::to(' / admin / laporan - barang - masuk / sort') }}',
+            url: '{{ URL::to("/admin/laporan-barang-masuk/sort") }}',
             data: {
                 'tanggal1': tanggal1,
                 'tanggal2': tanggal2,
@@ -161,7 +161,7 @@
         $value = $(this).val();
         $.ajax({
             type: 'get',
-            url: '{{ URL::to(' / admin / laporan - barang - sisa / minim') }}',
+            url: '{{ URL::to("/admin/laporan-barang-sisa/minim") }}',
             data: {
                 'search': $value,
             },

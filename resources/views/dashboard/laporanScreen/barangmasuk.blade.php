@@ -135,14 +135,16 @@
     $('#tampil').on('click', function () {
         var tanggal2 = $('#tanggal2').val();
         var tanggal1 = $('#tanggal1').val();
-        console.log(typeof (tanggal2))
-        console.log(tanggal1)
+        var parts = tanggal1.split('/');
+        var mydate1 = (parts[2]) + '-' + (parts[1]) + '-' + parts[0];
+        var parts2 = tanggal2.split('/');
+        var mydate2 = (parts2[2]) + '-' + (parts2[1]) + '-' + parts2[0];
         $.ajax({
             type: 'get',
-            url: '{{ URL::to(' / admin / laporan - barang - masuk / sort') }}',
+            url: '{{ URL::to("/admin/laporan-barang-masuk/sort") }}',
             data: {
-                'tanggal1': tanggal1,
-                'tanggal2': tanggal2,
+                'tanggal1': mydate1,
+                'tanggal2': mydate2,
             },
             success: function (data) {
                 $('#output').html(data);
