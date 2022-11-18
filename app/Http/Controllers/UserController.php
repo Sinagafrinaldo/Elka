@@ -9,10 +9,12 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
     public function index (){
+        $kategori = DB::table('kategori')->limit(4)->get();
         $layanan = DB::table('layanan')->get();
         return view('user.homeUser' , [
             "title" => "Home",
             "layanan" => $layanan,
+            "kategori"=> $kategori
         ]); 
     }
 

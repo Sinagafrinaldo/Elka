@@ -155,7 +155,7 @@ class TransaksiController extends Controller
                         foreach ($products as $key => $product) {
                             $output.=  '<tr>
                             <th scope="row">'.$a.'</th>
-                            <td>'.$product->tanggal.'</td>
+                            <td>'.date('d/m/Y', strtotime($product->tanggal)).'</td>
                             <td>'.$product->total.'</td>
                         </tr>';
                         $a++;

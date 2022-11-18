@@ -73,18 +73,12 @@
             <h2 class="text-center">PRODUK</h2>
             <hr class="mt-4 mb-3" style="border-width: 2px">
             <div class="row justify-content-center mb-5 ">
-                <a href="" class=" m-1 m-sm-3 w-auto">
-                    <img src="./assets/layanan-icon/1.png">
-                </a>
-                <a href="" class=" m-1 m-sm-3 w-auto">
-                    <img src="./assets/layanan-icon/2.png">
-                </a>
-                <a href="" class=" m-1 m-sm-3 w-auto">
-                    <img src="./assets/layanan-icon/3.png">
-                </a>
-                <a href="" class=" m-1 m-sm-3 w-auto">
-                    <img src="./assets/layanan-icon/4.png">
-                </a>
+                @foreach ($kategori as $k)
+                    <a href="/list-kategori/{{ $k->slug }}" class="kategori mx-2">
+                        <img src="/kategori/{{ $k->gambar }}" class="rounded-circle align-self-center">
+                        <h6 class="w-auto mt-2" style="text-align: center;">{{ $k->nama }}</h6>
+                    </a>
+                @endforeach
             </div>
 
             <h2 class="text-center">LAYANAN</h2>
@@ -92,7 +86,7 @@
             <div class="cek-layanan">
                 <div class="row justify-content-center">
                     @foreach ($layanan as $l)
-                        <a href="" name="test" type="button" class="" data-bs-toggle="modal"
+                        <a href="" name="test" type="button" class="py-1 py-lg-3" data-bs-toggle="modal"
                             data-bs-target="#{{ str_replace(' ', '-', $l->title) }}">
                             {{ $l->title }}
                         </a>
@@ -181,11 +175,21 @@
         }
 
         .layanan a img {
-            width: 10vmax;
+            width: 3vmax;
         }
 
-        .layanan a {
+        .layanan .kategori {
             padding: 0;
+            text-decoration: none;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            width: 140px;
+            height: 140px;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            justify-content: center;
         }
 
         .layanan .text-center {
@@ -214,11 +218,31 @@
             text-align: center;
         }
 
-        @media(max-width: 636px) {
+        @media(max-width: 680px) {
             .cek-layanan a {
                 font-size: 0.7rem;
                 margin: 0.3rem;
                 width: 42vw;
+            }
+
+            .layanan .kategori {
+                width: 90px;
+                height: 90px;
+            }
+
+            .layanan .kategori h6 {
+                font-size: 7pt;
+            }
+        }
+
+        @media(max-width: 439px) {
+            .layanan .kategori {
+                width: 70px;
+                height: 70px;
+            }
+
+            .layanan .kategori h6 {
+                font-size: 5pt;
             }
         }
     </style>
