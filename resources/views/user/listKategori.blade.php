@@ -53,12 +53,11 @@
                                         </div>
                                     </div>
                                     <div class="row px-sm-3 pt-2">
-                                        <a href="/detail/{{ $b->slug }}"
-                                            class="col-12 col-sm btn btn-sm btn-dark m-1">
+                                        <a href="/detail/{{ $b->slug }}" class="col btn btn-sm btn-dark m-1">
                                             Detail
                                         </a>
                                         <div
-                                            class="col-12 col-sm border border-dark rounded-1 d-flex justify-content-center fw-bolder align-items-center m-1">
+                                            class="col border border-dark rounded-1 d-flex justify-content-center fw-bolder align-items-center m-1">
                                             Stok : {{ $b->sisa }}
                                         </div>
                                     </div>

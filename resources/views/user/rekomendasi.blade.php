@@ -10,8 +10,7 @@
                 @if ($b->sisa <= 0)
                     <div class="col-md-5 col-lg-4 col-8 my-2 d-flex  me-3 ">
                         <div style="background-color: #b7b8b6" class="card shadow p-sm-3 w-100 h-100">
-                            <img style="-webkit-filter: grayscale(100%);
-                    filter: grayscale(100%);"
+                            <img style="-webkit-filter: grayscale(100%);filter: grayscale(100%);"
                                 src="/uploads/{{ $b->image }}" class="img-fluid align-self-center m-auto"
                                 alt="...">
                             <div class="card-body text-center d-flex flex-column justify-content-end">
@@ -35,9 +34,9 @@
                         </div>
                     </div>
                 @else
-                    <div class="col-md-5 col-lg-4 col-8 my-2 d-flex  me-3 ">
+                    <div class="col-md-5 col-lg-4 col-8 my-2 d-flex me-3 ">
                         <div class="card shadow p-sm-3 w-100 h-100">
-                            <img src="/uploads/{{ $b->image }}" class="img-fluid align-self-center m-auto"
+                            <img src="/uploads/{{ $b->image }}" class="img-fluid align-self-center m-auto img-rek"
                                 alt="...">
                             <div class="card-body text-center d-flex flex-column justify-content-end">
                                 <h5 class="card-title fw-bolder py-1 textstyle">{{ $b->nama }}</h5>
@@ -47,13 +46,13 @@
                                         <span style="font-size: 10pt">{{ $b->kategori }}</span>
                                     </div>
                                 </div>
-                                <div class="row d-flex flex-row px-sm-3 pt-2">
+                                <div class="row d-flex flex-row px-sm-3 pt-2 justify-content-center">
                                     <a href="/detail/{{ $b->slug }}"
-                                        class="col-12 col-sm btn btn-sm btn-dark m-1">
+                                        class="col-11 col-sm btn btn-sm btn-dark m-1">
                                         Detail
                                     </a>
                                     <div
-                                        class="col-12 col-sm border border-dark rounded-1 d-flex justify-content-center fw-bolder align-items-center m-1">
+                                        class="col-11 col-sm border border-dark rounded-1 d-flex justify-content-center fw-bolder align-items-center m-1">
                                         Stok: {{ $b->sisa }}
                                     </div>
                                 </div>
@@ -94,15 +93,8 @@
     }
 
     @media (max-width: 450px) {
-        h6 {
-            font-size: 7pt;
-        }
 
-        .col-5 {
-            padding: 0;
-        }
-
-        .img-fluid {
+        .img-rek {
             width: 100px;
             height: 100px;
             margin-top: 10px;
@@ -114,7 +106,7 @@
     }
 
     @media (min-width: 450px) {
-        .img-fluid {
+        .img-rek {
             width: 200px;
             height: auto;
         }
