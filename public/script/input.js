@@ -201,6 +201,8 @@ $("#nota").on("click", function () {
     today = String(today.getDate()).padStart(2, '0') + '-' + String(today.getMonth() + 1).padStart(2, '0') +
         '-' + today.getFullYear();
 
+    divContents = divContents.replace("#656a6e", "black");
+
     printWindow.document.write(`
              <html>
                     <head>
@@ -214,16 +216,23 @@ $("#nota").on("click", function () {
                             //     text-align: left;
                             // }
                             
-                            td {
-                                padding: 5px 20px;
+                            // td {
+                            //     // padding: 5px 20px;
+
+                            // }
+                            tbody {
+                                text-align: center;
                             }
-                             table{
-                            }
+
+                            @font-face {
+                                font-family: MerchantCopy;
+                                src: url(/font/MerchantCopyDoublesize.ttf);
+                              }
+                             
                             body{
                                 color: black;
+                                font-family: MerchantCopy;
                             }
-                           
-                           
                             </style>
                     </head>
                 <body>
@@ -256,7 +265,7 @@ $("#nota").on("click", function () {
     //     `)
     // });
     // printWindow.document.write(divContents);
-    printWindow.document.write(`<div style="display: flex; ">` + divContents +
+    printWindow.document.write(`<div style="display: flex;">` + divContents +
         `</div> `)
     printWindow.document.write(`            
                     <hr>
@@ -268,12 +277,9 @@ $("#nota").on("click", function () {
                     </p>
                     <hr>
                     <p>
-                        Bayar : ` + $bayar + `
-                    </p>
-                    <p>
+                        Bayar : ` + $bayar + ` <br>
                         Kembalian : ` + $kembali + `
                     </p>
-                    <p>
                         <p>Catatan : </p>
                         <p>
                             ` + $deskripsi + `
@@ -286,15 +292,19 @@ $("#nota").on("click", function () {
                     padding-top: 30px;
                 }
                 @page {
-                    size: A5;
                     margin: 0;
                 }
-                // @media print {
-                //     html, body {
-                //         width: 30mm;
-                //         height: 58mm;
-                //     }
-                // }
+                @media print {
+                    html, body {
+                        width: 58mm;
+                        height: 120mm;
+                        margin: 0;
+                        font-size: 7pt;
+                    }
+                    table {
+                        font-size: 7pt;
+                    }
+                }
             </style>
         `)
 
