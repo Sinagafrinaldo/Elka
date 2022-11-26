@@ -205,6 +205,7 @@ class TransaksiController extends Controller
                             <td>'.$product->id.'</td>
                             <td>'.$product->nama.'</td>
                             <td>'.$product->kategori.'</td>
+                            <td>'.$product->suplier.'</td>
                             <td>'. date('d/m/Y', strtotime($product->tanggal)).'</td>
                             <td>'.$product->jumlah.'</td>
 

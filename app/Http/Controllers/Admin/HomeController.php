@@ -110,10 +110,12 @@ class HomeController extends Controller
 
     public function inputObat (){
         $kategori = DB::table('kategori')->get();
+        $suplier = DB::table('suplier')->get();
 
         return view('dashboard.inventori.tambahObat', [
             "title" => "Input Obat",
-            "kategori" => $kategori
+            "kategori" => $kategori,
+            "suplier" => $suplier
         ]); 
     }
 
@@ -197,10 +199,25 @@ class HomeController extends Controller
             "kategori" => $kategori
         ]); 
     }
+    public function suplier (){
+        $suplier = DB::table('suplier')
+		->orderby('id' , 'desc')
+		->paginate(8)->onEachSide(0);
+
+        return view('dashboard.suplier.home',[
+            "title" => "Supliers",
+            "suplier" => $suplier
+        ]); 
+    }
 
     public function inputKategori (){
         return view('dashboard.kategori.input',[
             "title" => "Tambah Kategori"
+        ]); 
+    }
+    public function inputSuplier (){
+        return view('dashboard.suplier.input',[
+            "title" => "Input Suplier"
         ]); 
     }
 
@@ -209,6 +226,13 @@ class HomeController extends Controller
 		return view('dashboard.kategori.edit',[
             'kategori' => $kategori,
             "title" => "Edit Kategori"
+        ]);
+    }
+    public function editSuplier (Request $request){
+        $suplier = DB::table('suplier')->where('id',$request->id)->get();
+		return view('dashboard.suplier.edit',[
+            'suplier' => $suplier,
+            "title" => "Edit Suplier"
         ]);
     }
 
@@ -224,7 +248,8 @@ class HomeController extends Controller
             'deskripsi'=> 'required',
             'kategori'=> 'required',
 			'image' => 'required|mimes:jpg,jpeg,png,bmp,gif,svg',
-            'harga' =>'required'
+            'harga' =>'required',
+            'suplier' => 'required'
 
 		]);
         $old = DB::table('barang')->get();
@@ -234,10 +259,12 @@ class HomeController extends Controller
                 $tersedia = 1;
                 $error = 'Nama obat sudah terdaftar didatabase';
                 $kategori = DB::table('kategori')->get();
+                $suplier = DB::table('suplier')->get();
 
         return view('dashboard.inventori.tambahObat', [
             "title" => "Input Obat",
             "kategori" => $kategori,
+            "suplier" => $suplier,
             "error" =>$error
         ]); 
             }
@@ -261,11 +288,13 @@ class HomeController extends Controller
                 'image' =>$name,
                 'slug' =>$slug,
                 'harga' =>$request->harga,
+                'suplier' =>$request->suplier
             ]);
             DB::table('laporan_barangmasuk')->insert([
                 'nama' => $request->nama,
                 'kategori' =>$request->kategori,
-                'jumlah' => $request->jumlah
+                'jumlah' => $request->jumlah,
+                'suplier'  =>$request->suplier
             ]);
         }
 	
@@ -284,11 +313,13 @@ class HomeController extends Controller
     public function edit(Request $request)
 	{
     $kategori = DB::table('kategori')->get();
+    $suplier = DB::table('suplier')->get();
 	$barang = DB::table('barang')->where('slug',$request->slug)->get();
 		return view('dashboard.inventori.editObat',[
             'barang' => $barang,
             "title" => "Edit Obat",
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            'suplier' => $suplier
         ]);
 	}
 
@@ -314,7 +345,20 @@ class HomeController extends Controller
 		return redirect('/admin/kategori');
 	
 	}
+    public function tambahSuplier(Request $request)
+	{
+		$this->validate($request, rules:[
+			'nama' => 'required',
 
+		]);
+	
+		DB::table('suplier')->insert([
+			'nama' => $request->nama,
+	
+		]);
+		return redirect('/admin/suplier');
+	
+	}
     public function updateKategori(Request $request)
 	{
 
@@ -345,13 +389,31 @@ class HomeController extends Controller
 
 		return redirect('/admin/kategori');
 	}
+    public function updateSuplier(Request $request)
+	{
+
+	
+	$this->validate($request, rules:[
+			'nama' => 'required',
+	]);
+	DB::table('suplier')->where('id',$request->id)->update([
+        'nama' => $request->nama,
+		]);
+	
+		return redirect('/admin/suplier');
+	}
 	public function hapusKategori($id)
 	{
 	
 		DB::table('kategori')->where('id',$id)->delete();
         return redirect('/admin/kategori' ); 
 	}
-
+    public function hapusSuplier($id)
+	{
+	
+		DB::table('suplier')->where('id',$id)->delete();
+        return redirect('/admin/suplier' ); 
+	}
     public function updateBarang(Request $request)
 	{
         date_default_timezone_set('Asia/Jakarta');   
@@ -366,7 +428,6 @@ class HomeController extends Controller
             'harga'=> 'required',
             'deskripsi'=> 'required',
             'kategori'=> 'required',
-
 		]);
         $products=DB::table('barang')
             ->where('id',$request->id)
@@ -377,7 +438,8 @@ class HomeController extends Controller
                 DB::table('laporan_barangmasuk')->insert([
                     'nama' => $request->nama,
                     'kategori' =>$request->kategori,
-                    'jumlah' => $request->jumlah - $product->sisa
+                    'jumlah' => $request->jumlah - $product->sisa,
+                    'suplier' => $request->suplier,
                 ]);
             }
         }
@@ -402,7 +464,8 @@ class HomeController extends Controller
                 'image' =>$name,
                 'slug' =>$slug,
                 'harga' =>$request->harga,
-                'tanggal_edit'=> $time
+                'tanggal_edit'=> $time,
+                'suplier' => $request->suplier
             ]);
         }else{
             DB::table('barang')->where('id',$request->id)->update([
@@ -415,7 +478,8 @@ class HomeController extends Controller
                 'kadaluarsa' =>$request->kadaluarsa,
                 'slug' =>$slug,
                 'harga' =>$request->harga,
-                'tanggal_edit'=> $time
+                'tanggal_edit'=> $time,
+                'suplier' => $request->suplier
             ]);
         }
 		return redirect('/admin/daftar-obat');
