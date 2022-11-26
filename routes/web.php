@@ -43,11 +43,15 @@ Route::prefix('admin')->group(function(){
     Route::get('/laporan-pemasukan',[App\Http\Controllers\Admin\HomeController::class,'laporan_pemasukan'])->name('admin.laporan_pemasukan');
     Route::get('/kadaluarsa',[App\Http\Controllers\Admin\HomeController::class,'kadaluarsa'])->name('admin.kadaluarsa');
     Route::get('/kategori',[App\Http\Controllers\Admin\HomeController::class,'kategori'])->name('admin.kategori');
-    
+    Route::get('/suplier',[App\Http\Controllers\Admin\HomeController::class,'suplier'])->name('admin.suplier');
+    Route::get('/tambah-suplier',[App\Http\Controllers\Admin\HomeController::class,'inputSuplier'])->name('admin.inputSuplier');
+
     Route::post('/input-obat/store',[App\Http\Controllers\Admin\HomeController::class,'store']);
     Route::post('/input-kategori/store',[App\Http\Controllers\Admin\HomeController::class,'tambahKategori']);
+    Route::post('/input-suplier/store',[App\Http\Controllers\Admin\HomeController::class,'tambahSuplier']);
 
     Route::post('/update-kategori',[App\Http\Controllers\Admin\HomeController::class,'updateKategori'])->name('admin.updateKategori');
+    Route::post('/update-suplier',[App\Http\Controllers\Admin\HomeController::class,'updateSuplier'])->name('admin.updateSuplier');
     Route::post('/update-barang',[App\Http\Controllers\Admin\HomeController::class,'updateBarang'])->name('admin.updateBarang');
     
     Route::get('/detail-obat/{slug}',[App\Http\Controllers\Admin\HomeController::class,'detail'])->name('admin.detail');
@@ -55,6 +59,7 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/tambah-kategori',[App\Http\Controllers\Admin\HomeController::class,'inputKategori'])->name('admin.inputKategori');
     Route::get('/edit-kategori/{slug}',[App\Http\Controllers\Admin\HomeController::class,'editKategori']);
+    Route::get('/edit-suplier/{id}',[App\Http\Controllers\Admin\HomeController::class,'editSuplier']);
 
     Route::get('/daftar-obat/cari',[App\Http\Controllers\Admin\HomeController::class,'search']);
     Route::get('/kadaluarsa/cari',[App\Http\Controllers\Admin\TransaksiController::class,'searchKadaluarsa']);
@@ -72,5 +77,6 @@ Route::prefix('admin')->group(function(){
 
 
     Route::get('/kategori/hapus-kategori/{id}',[App\Http\Controllers\Admin\HomeController::class,'hapusKategori']);
+    Route::get('/suplier/hapus-suplier/{id}',[App\Http\Controllers\Admin\HomeController::class,'hapusSuplier']);
     Route::get('/daftar-obat/hapus-barang/{id}',[App\Http\Controllers\Admin\HomeController::class,'hapusBarang']);
 });
