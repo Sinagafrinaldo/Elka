@@ -19,6 +19,7 @@
                     <th scope="col">ID Produk</th>
                     <th scope="col">Produk</th>
                     <th scope="col">Kategori</th>
+                    <th scope="col">Suplier</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Jumlah</th>
                 </tr>
@@ -30,6 +31,7 @@
                     <td> {{ $b->id }} </td>
                     <td>{{ $b->nama }}</td>
                     <td>{{ $b->kategori }}</td>
+                    <td>{{ $b->suplier }}</td>
                     <td>{{ date('d/m/Y', strtotime($b->tanggal)) }}</td>
                     <td>{{ $b->jumlah }}</td>
                 </tr>
