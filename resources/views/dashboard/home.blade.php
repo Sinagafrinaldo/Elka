@@ -55,9 +55,9 @@
                 style="border: solid 1px #03A9F5; border-radius: 6px;">
                 <div class="d-block text-center px-3 pt-2">
                     <img src="/assets/icon-dashboard/medical.png" width="40px" height="40px" />
-                    <div class="fs-5 mt-2">{{ $jumlah }} Obat</div>
+                    <div class="fs-5 mt-2">{{ $jumlah }} Produk</div>
                     <div class="d-flex mb-2 justify-content-center">
-                        <h6 class="me-2 my-2">Daftar Obat </h6>
+                        <h6 class="me-2 my-2">Daftar Produk </h6>
                     </div>
                 </div>
                 <a href="{{ route('admin.daftarObat') }}"
@@ -73,9 +73,9 @@
                 style="border: solid 1px #01A768; border-radius: 6px;">
                 <div class="d-block text-center px-3 pt-2">
                     <img src="/assets/icon-dashboard/plus_P.png" width="40px" height="40px" />
-                    <div class="fs-5 mt-2">{{ $kadaluarsa }} Obat</div>
+                    <div class="fs-5 mt-2">{{ $kadaluarsa }} Produk</div>
                     <div class="d-flex mb-2 justify-content-center">
-                        <h6 class="me-2 my-2">Obat Kadaluarsa </h6>
+                        <h6 class="me-2 my-2">Produk Kadaluarsa </h6>
                     </div>
                 </div>
                 <a href="{{ route('admin.kadaluarsa') }}"
@@ -91,7 +91,7 @@
                 style="border: solid 1px #F0483E; border-radius: 6px;">
                 <div class="d-block text-center px-3 pt-2">
                     <img src="/assets/icon-dashboard/danger.png" width="40px" height="40px" />
-                    <div class="fs-5 mt-2">{{ $minim }} Obat</div>
+                    <div class="fs-5 mt-2">{{ $minim }} Produk</div>
                     <div class="d-flex mb-2 justify-content-center">
                         <h6 class="me-2 my-2">Kekurangan Stok</h6>
                     </div>
@@ -125,7 +125,7 @@
                 <div class="row p-3 px-5">
                     <div class="col">
                         <h5 class="fw-bolder">{{ $pcs }}</h5>
-                        <span>Jumlah Obat</span>
+                        <span>Jumlah Produk</span>
                     </div>
                     <div class="col">
                         <h5 class="fw-bolder">{{ $kategori }}</h5>
