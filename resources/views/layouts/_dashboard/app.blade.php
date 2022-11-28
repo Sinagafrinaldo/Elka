@@ -85,7 +85,7 @@
                     id="inventorySubmenu">
                     <a class="list-group-item list-group-item-action text-white  p-3 ps-5"
                         style="background-color: {{ substr($title, -4) === 'Obat' ? '#009099' : 'transparent' }}"
-                        href="{{ route('admin.daftarObat') }}">Daftar Obat</a>
+                        href="{{ route('admin.daftarObat') }}">Daftar Produk</a>
                     <a class="list-group-item list-group-item-action text-white  p-3 ps-5"
                         style="background-color: {{ $title === 'Input Transaksi' ? '#009099' : 'transparent' }}"
                         href="{{ route('admin.inputTransaksi') }}">Input Transaksi</a>
