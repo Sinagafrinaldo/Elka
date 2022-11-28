@@ -1,6 +1,6 @@
 @extends('layouts._dashboard.app')
 
-<title>Detail Obat || Elka Farma</title>
+<title>Detail Produk || Elka Farma</title>
 
 @section('content')
     <div class="mx-4 mt-2">
@@ -8,9 +8,9 @@
             <div class="d-flex w-over">
                 <a href="{{ route('admin.daftarObat') }}" class="text-decoration-none text-secondary fs-4">Inventory</a>
                 <i class="mt-2 mx-3 fa-solid fa-chevron-right text-dark"></i>
-                <a href="{{ route('admin.daftarObat') }}" class="text-decoration-none text-secondary fs-4">Daftar Obat</a>
+                <a href="{{ route('admin.daftarObat') }}" class="text-decoration-none text-secondary fs-4">Daftar Produk</a>
                 <i class="mt-2 mx-3 fa-solid fa-chevron-right text-dark"></i>
-                <a href="" class="text-decoration-none text-dark fw-bold fs-4">Detail Obat</a>
+                <a href="" class="text-decoration-none text-dark fw-bold fs-4">Detail Produk</a>
             </div>
         </div>
         <h6 class="fs-6 mt-1 mb-4">*Semua kolom wajib diisi.</h6>
@@ -19,7 +19,7 @@
         @foreach ($barang as $b)
             <div class="row mb-3">
                 <div class="col-12 col-sm">
-                    <div class="fs-6 mb-1">Nama Obat</div>
+                    <div class="fs-6 mb-1">Nama Produk</div>
                     <input value="{{ $b->nama }}" style="background-color: #E3EBF3;" name="nama" type="text"
                         class="form-control" disabled>
                 </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-12 col-sm">
-                    <div class="fs-6 mb-1">Jenis Obat</div>
+                    <div class="fs-6 mb-1">Jenis Produk</div>
                     <input value="{{ $b->kategori }}" style="background-color: #E3EBF3;" name="kategori" type="text"
                         class="form-control" disabled>
                 </div>

@@ -36,7 +36,7 @@ $time = date("Y-m-d", time());
                 <h6>Produk</h6>
                 <select id="produkList" class="form-select form-select-sm border-secondary"
                     aria-label="Default select example" aria-placeholder="Pilih produk.." required>
-                    <option value="null">-- Pilih Obat --</option>
+                    <option value="null">-- Pilih Produk --</option>
                     @foreach ($barang as $b)
                     <option
                         style=" @if ($b->kadaluarsa< $time && $b->sisa <= 0) color: gray  @elseif ($b->kadaluarsa< $time) color: #ff3700 @endif"

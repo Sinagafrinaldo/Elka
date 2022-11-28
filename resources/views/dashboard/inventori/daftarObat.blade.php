@@ -1,5 +1,5 @@
 <link rel="shortcut icon" href="/assets/images/icon.svg" type="image/x-icon">
-<title>Daftar Obat || Elka Farma</title>
+<title>Daftar Produk || Elka Farma</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -13,14 +13,14 @@
                     <a href="{{ route('admin.daftarObat') }}" class="text-decoration-none text-secondary fs-4">Inventory</a>
                     <i class="mt-2 mx-3 fa-solid fa-chevron-right text-dark"></i>
                     <a href="{{ route('admin.daftarObat') }}" class="text-decoration-none text-dark fw-bold fs-4">Daftar
-                        Obat</a>
+                        Produk</a>
                 </div>
-                <h6 class="fs-6 mt-1 mb-4 fw-normal">Daftar obat yang tersedia di apotik</h6>
+                <h6 class="fs-6 mt-1 mb-4 fw-normal">Daftar produk yang tersedia di apotik</h6>
             </div>
             <div class="ms-auto mt-3">
                 <a href="{{ route('admin.inputObat') }}" class="btn btn-danger">
                     <i class="fa-solid fa-plus"></i>
-                    Tambah Item</a>
+                    Tambah Produk</a>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <div class="col-12 col-sm-6">
                 <form class="d-flex mt-2">
                     <input id="search" type="text" class="form-control me-sm-2" type="search"
-                        placeholder="Cari Nama/kategori obat.." aria-label="Search">
+                        placeholder="Cari Nama/kategori produk.." aria-label="Search">
                     <!-- <button class="btn btn-outline-success" type="submit"><i
                                                                                                                                                                                                                                                                                                                                                                                                                         class="fa-solid fa-magnifying-glass"></i></button> -->
                 </form>
