@@ -14,7 +14,7 @@
 
     {{-- Icon --}}
     <script src="https://kit.fontawesome.com/0d1a099ae7.js" crossorigin="anonymous"></script>
-
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
@@ -71,14 +71,14 @@
                 <a class="list-group-item list-group-item-action text-white p-3 d-flex" href="
                     {{ route('admin.home') }}"
                     style="background-color: {{ $title === 'dashboard' ? '#009099' : 'transparent' }}">
-                    <img src="/assets/icon-navbar/dashboard.png" class="icon-navbar">
+                    <img src="/assets/icon-navbar/dashboard.svg" class="icon-navbar">
                     Dashboard
                 </a>
 
                 <a class="list-group-item list-group-item-action text-white bg-transparent p-3 d-flex accordion-button collapsed"
                     data-bs-toggle="collapse" href="#inventorySubmenu" role="button" aria-expanded="false"
                     aria-controls="inventorySubmenu">
-                    <img src="/assets/icon-navbar/inventory.png" class="icon-navbar">
+                    <img src="/assets/icon-navbar/inventory.svg" class="icon-navbar">
                     Inventory
                 </a>
                 <ul class="collapse list-unstyled {{ substr($title, -4) === 'Obat' || $title === 'Input Transaksi' ? 'show' : '' }}"
@@ -94,7 +94,7 @@
                 <a class="list-group-item list-group-item-action text-white bg-transparent p-3 d-flex accordion-button collapsed"
                     data-bs-toggle="collapse" href="#laporanSubmenu" role="button" aria-expanded="false"
                     aria-controls="laporanSubmenu">
-                    <img src="/assets/icon-navbar/lapor.png" class="icon-navbar">
+                    <img src="/assets/icon-navbar/laporan.svg" class="icon-navbar">
                     Laporan
                 </a>
                 <ul class="collapse list-unstyled {{ substr($title, 0, 7) === 'Laporan' ? 'show' : '' }} "
@@ -117,20 +117,20 @@
                 <a class="list-group-item list-group-item-action text-white p-3 d-flex" href="
                     {{ route('admin.kadaluarsa') }}"
                     style="background-color: {{ $title === 'Kadaluarsa' ? '#009099' : 'transparent' }}">
-                    <img src="/assets/icon-navbar/kadaluarsa.png" class="icon-navbar">
+                    <img src="/assets/icon-navbar/kadaluarsa.svg" class="icon-navbar">
                     Kadaluarsa
                 </a>
 
                 <a class="list-group-item list-group-item-action text-white p-3 d-flex" href="
                     {{ route('admin.kategori') }}"
                     style="background-color: {{ substr($title, -8) === 'Kategori' ? '#009099' : 'transparent' }}">
-                    <img src="/assets/icon-navbar/kategori.png" class="icon-navbar">
+                    <img src="/assets/icon-navbar/kategori.svg" class="icon-navbar">
                     Kategori
                 </a>
                 <a class="list-group-item list-group-item-action text-white p-3 d-flex" href="
                     {{ route('admin.suplier') }}"
                     style="background-color: {{ substr($title, -8) === 'Supliers' || $title === 'Input Suplier' || $title === 'Edit Suplier'  ? '#009099' : 'transparent' }}">
-                    <img src="/assets/icon-navbar/kategori.png" class="icon-navbar">
+                    <img src="/assets/icon-navbar/supliers.svg" class="icon-navbar">
                     Supliers
                 </a>
             </div>
