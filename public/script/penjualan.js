@@ -1,6 +1,6 @@
 $("#nota").on("click", function () {
+    
     var title = "Laporan Penjualan";
-    var title = "Laporan Barang Masuk";
     var tanggal2 = $('#tanggal2').val();
     var tanggal1 = $('#tanggal1').val();
 
