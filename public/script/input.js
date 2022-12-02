@@ -2,6 +2,7 @@
 var big_data = [];
 var big2_data = [];
 var totalHarga = 0;
+let data_all = [];
 
 function cekHarga() {
     var a = 0
@@ -44,8 +45,15 @@ function delete_row(rowno) {
     var result2 = arrayRemove(big2_data, temp2);
     big2_data = result2;
 
+
     $('#' + rowno).remove();
     cekHarga();
+
+    data_all = data_all.filter((e) => {
+        var split = e.nama.split(" ");
+        split = split[0] + e.jumlah;
+        return split != rowno;       
+    })
     // $("#produkList option[value='" + named + "']").removeAttr('disabled');
     // $namaP = $('#produkList').val();
     // $("#produkList option[value='" + $namaP + "']").attr("disabled", "disabled");
@@ -180,6 +188,13 @@ $('#keranjang').on('click', function () {
                 $(data).appendTo($("#outputList"));
                 save_data($namaP, $value);
                 $('#produkList').val("null")
+
+                data_all.push({
+                    "nama": $namaP,
+                    "harga": $harga,
+                    "jumlah": $value,
+                    "total": $harga*$value 
+                })
             }
         });
     }
@@ -201,47 +216,24 @@ $("#nota").on("click", function () {
     today = String(today.getDate()).padStart(2, '0') + '-' + String(today.getMonth() + 1).padStart(2, '0') +
         '-' + today.getFullYear();
 
-    divContents = divContents.replace("#656a6e", "black");
-
     printWindow.document.write(`
              <html>
                     <head>
                         <title>Nota</title>
                         <style>
-                            table tr th:nth-child(5), table tr td:nth-child(5){
-                                display:none;
-                                
+                            body {
+                                font-family: Arial;
+                                font-size: 0.8rem
                             }
-                            // table tr th:nth-child(1), table tr td:nth-child(1){
-                            //     text-align: left;
-                            // }
-                            
-                            // td {
-                            //     // padding: 5px 20px;
-
-                            // }
-                            tbody {
-                                text-align: center;
-                            }
-
-                            @font-face {
-                                font-family: MerchantCopy;
-                                src: url(/font/MerchantCopyDoublesize.ttf);
-                              }
-                             
-                            body{
-                                color: black;
-                                font-family: MerchantCopy;
-                            }
-                            </style>
+                        </style>
                     </head>
                 <body>
                     <center>
-                        <div style="font-size: 1.5rem; font-weight: bold" >Apotek Elka Farma</div>
+                        <div style="font-size: 1.2rem; font-weight: bold" >Apotek Elka Farma</div>
                     </center>
 
                     <br>
-                    <div style="margin-top: 40px" >
+                    <div style="margin-top: 30px" >
                         Padang Cermin, Kec. Padang Cermin, Kabupaten Pesawaran
                     </div>
                     <div>
@@ -250,32 +242,32 @@ $("#nota").on("click", function () {
                     <div>
                         Pukul : ` + time + `
                     </div>
-                    <hr>`)
+                    <hr style='border: 1px dotted; border-style: none none dotted;' >`)
 
-    // big2_data.forEach(e => {
-    //     printWindow.document.write(`
-    //                 <p>
-    //                     <div style="margin-bottom: 3px" >` + e + `</div>
-    //                     <div style="display: flex; justify-content: space-between;">
-    //                         <div>Harga Satuan</div>
-    //                         <div>Jumlah</div>
-    //                         <div>Rp. 103.000</div>
-    //                     </div>
-    //                 </p>
-    //     `)
-    // });
+    data_all.forEach(e => {
+        printWindow.document.write(`
+                    <p>
+                        <div style="margin-bottom: 3px" >` + e.nama + `</div>
+                        <div style="display: flex; justify-content: space-between; padding-inline: 10px">
+                            <div>Rp. `+ e.harga +`</div>
+                            <div>x`+ e.jumlah +`</div>
+                            <div>Rp. `+ e.total +`</div>
+                        </div>
+                    </p>
+        `)
+    });
     // printWindow.document.write(divContents);
-    printWindow.document.write(`<div style="display: flex;">` + divContents +
-        `</div> `)
+    // printWindow.document.write(`<div style="display: flex;">` + divContents +
+    //     `</div> `)
     printWindow.document.write(`            
-                    <hr>
+                    <hr style='border: 1px dotted; border-style: none none dotted;' >
         `)
 
     printWindow.document.write(`            
                     <p>
                         Total : ` + $total + `
                     </p>
-                    <hr>
+                    <hr style='border: 1px dotted; border-style: none none dotted;' >
                     <p>
                         Bayar : ` + $bayar + ` <br>
                         Kembalian : ` + $kembali + `
@@ -288,9 +280,6 @@ $("#nota").on("click", function () {
                 </body>
             </html>
             <style>
-                body{
-                    padding-top: 30px;
-                }
                 @page {
                     margin: 0;
                 }
@@ -299,22 +288,10 @@ $("#nota").on("click", function () {
                         width: 58mm;
                         height: 120mm;
                         margin: 0;
-                        font-size: 7pt;
-                    }
-                    table {
-                        font-size: 7pt;
                     }
                 }
             </style>
         `)
-
-    // printWindow.document.write('<html><head><title>Apotek Elka Farma</title>');
-    // printWindow.document.write('</head><body >');
-    // printWindow.document.write(divContents);
-
-    // printWindow.document.write('<hr><b>Total : Rp </b>', $total, '<br><b>Bayar: Rp </b>', $bayar,
-    //     '<br><b>Kembalian: Rp </b>', $kembali, '<br><fieldset>Deskripsi : ', $deskripsi, '</fieldset>');
-    // printWindow.document.write('</body></html>');
     printWindow.document.close();
     printWindow.print();
 });
