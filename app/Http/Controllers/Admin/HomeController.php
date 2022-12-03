@@ -99,7 +99,7 @@ class HomeController extends Controller
     }
 
     public function inputTransaksi (){
-        $barang = DB::table('barang')->get();
+        $barang = DB::table('barang')->orderby('nama', 'asc')->get();
 
         
         return view('dashboard.inventori.inputTransaksi', [
