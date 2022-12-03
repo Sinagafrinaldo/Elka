@@ -1,6 +1,7 @@
 <link rel="shortcut icon" href="/assets/images/icon.svg" type="image/x-icon">
 <meta name="_token" content="{!! csrf_token() !!}" />
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
     integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
@@ -149,4 +150,10 @@ $time = date("Y-m-d", time());
     });
 </script>
 <script src="/script/input.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+<script>
+    $("#produkList").select2();
+</script>
 @endsection
