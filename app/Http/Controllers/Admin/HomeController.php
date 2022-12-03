@@ -418,7 +418,10 @@ class HomeController extends Controller
 	{
         date_default_timezone_set('Asia/Jakarta');   
         $time = date("Y-m-d H:i:s", time()); 
-
+        $suplier =  $request->suplier;
+        if ($suplier == null){
+            $suplier = "-";
+        }
         $this->validate($request, rules:[
 			'nama' => 'required',
 			'jumlah' => 'required',
@@ -439,7 +442,7 @@ class HomeController extends Controller
                     'nama' => $request->nama,
                     'kategori' =>$request->kategori,
                     'jumlah' => $request->jumlah - $product->sisa,
-                    'suplier' => $request->suplier,
+                    'suplier' => $suplier,
                 ]);
             }
         }
@@ -465,7 +468,7 @@ class HomeController extends Controller
                 'slug' =>$slug,
                 'harga' =>$request->harga,
                 'tanggal_edit'=> $time,
-                'suplier' => $request->suplier
+                'suplier' => $suplier
             ]);
         }else{
             DB::table('barang')->where('id',$request->id)->update([
@@ -479,7 +482,7 @@ class HomeController extends Controller
                 'slug' =>$slug,
                 'harga' =>$request->harga,
                 'tanggal_edit'=> $time,
-                'suplier' => $request->suplier
+                'suplier' => $suplier
             ]);
         }
 		return redirect('/admin/daftar-obat');
