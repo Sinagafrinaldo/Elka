@@ -17,7 +17,7 @@
     <form action="/admin/update-suplier" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-12 col-sm-6 mb-3">
-            <div class="fs-6 mb-1">Nama Obat</div>
+            <div class="fs-6 mb-1">Nama Suplier</div>
             <input value="{{ $k->nama }}" name="nama" type="text" class="bg-light form-control">
         </div>
 
